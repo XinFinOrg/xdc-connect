@@ -1,0 +1,105 @@
+.Toastify {
+
+  a {
+    color: $color-new-blue;
+  }
+
+  /** Used to define container behavior: width, position: fixed etc... **/
+  &__toast-container {
+    /** Used to define the position of the ToastContainer **/
+    &--top-left {
+    }
+    &--top-center {
+    }
+    &--top-right {
+    }
+    &--bottom-left {
+    }
+    &--bottom-center {
+    }
+    &--bottom-right {
+    }
+  }
+
+  /** Classes for the displayed toast **/
+  &__toast {
+    &--rtl {
+    }
+    &--dark {
+    }
+    &--default {
+    }
+    &--info {
+      color: grey;
+
+      background: white !important;
+    }
+    &--success {
+      color: grey;
+
+      background: white !important;
+    }
+    &--warning {
+      color: grey;
+      background: white !important;
+    }
+    &--processing-tx {
+      color: grey;
+      background: white !important;
+      border-left: 4px solid $color-new-orange;
+    }
+    &--success-tx {
+      color: grey;
+      background: white !important;
+      border-left: 4px solid $color-new-green;
+    }
+    &--error {
+      color: grey;
+      background: white !important;
+      border-left: 4px solid $color-new-red;
+    }
+    &-body {
+    }
+  }
+
+  /** Classes for the close button. Better use your own closeButton **/
+  &__close-button {
+    color: black !important;
+
+    &--default {
+    }
+    & > svg {
+    }
+    &:hover,
+    &:focus {
+    }
+
+    &--success-tx {
+      color: black !important;
+    }
+  }
+
+  /** Classes for the progress bar **/
+  &__progress-bar {
+    &--animated {
+    }
+    &--controlled {
+    }
+    &--rtl {
+    }
+    &--default {
+      background: $color-light-blue !important;
+    }
+    &--dark {
+    }
+    &--warning {
+      background: $color-new-orange !important;
+    }
+    &--success {
+      background: $color-new-green !important;
+    }
+    &--error {
+      background: $color-new-red !important;
+    }
+  }
+}
