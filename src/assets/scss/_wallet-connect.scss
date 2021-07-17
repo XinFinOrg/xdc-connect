@@ -1,3 +1,7 @@
+.disabled {
+  pointer-events: none;
+}
+
 .modal-backdrop {
   background-color: var(--text-color);
   opacity: 0.65 !important;
@@ -23,10 +27,6 @@
 }
 .modal-content {
   border-radius: 12px;
-}
-.darkTheme .modal-content {
-  background-color: var(--frontbg);
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
 }
 .wallet-connect-block {
   display: grid;
@@ -110,33 +110,6 @@ button.back:hover {
   color: var(--text-color);
   text-shadow: none;
   opacity: 0.6;
-}
-
-.darkTheme .modal-backdrop {
-  background-color: var(--black);
-  opacity: 0.75 !important;
-}
-.darkTheme .modal-header {
-  border-bottom: 1px solid var(--purple-grey);
-}
-.darkTheme .modal-header .close {
-  color: var(--white);
-}
-.darkTheme .modal-footer {
-  color: var(--text-color);
-  background-color: var(--background-color);
-  border-top: 1px solid var(--border-color) !important;
-}
-.darkTheme .wallect-connect-btn {
-  background-color: var(--border-color);
-  border: 1px solid var(--border-color);
-}
-.darkTheme .wallect-connect-btn:hover {
-  border-color: var(--purple-grey);
-}
-.darkTheme button.back:hover {
-  color: var(--text-color);
-  opacity: 1;
 }
 
 button {

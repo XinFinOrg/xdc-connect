@@ -30,11 +30,14 @@ function GetFuncFromLoader(loader) {
  * @note directly get from default provider
  *
  */
-export function GetNativeBalance() {
+export function GetNativeBalance(address) {
   return new Promise((resolve, reject) => {
     const xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(DEFAULT_PROVIDER));
-    const wallet = store.getState();
-    const address = wallet.wallet.address;
+    if (!address) {
+      const wallet = store.getState();
+      address = wallet.wallet.address;
+    }
+
     xdc3.eth.getBalance(address).then(resolve).catch(reject);
   });
 }
@@ -53,7 +56,6 @@ export const SendTransaction = (tx) => {
               Sucsess&nbsp;
               <a
                 href={BUILD_TX_LINK(EXPLORER, transactionHash)}
-                // href={`${EXPLORER}/tx/${transactionHash}`}
                 rel="noreferrer"
                 target="_blank"
               >

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Modal } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 import Keystore from "./Keystore";
@@ -13,7 +13,7 @@ import PrivateKeyLogo from "../../assets/img/wallets/privatekey-logo.png";
 import KeystoreLogo from "../../assets/img/wallets/keystore-logo.png";
 import DcentLogo from "../../assets/img/wallets/dcent-logo.png";
 
-import { DEFAULT_CHAIN_ID } from "../../helpers/constant";
+import { DEFAULT_CHAIN_ID, CHAIN_DATA } from "../../helpers/constant";
 import * as actions from "../../actions";
 
 const Provider = {
@@ -66,6 +66,7 @@ class WalletConnect extends React.Component {
         chain_id: DEFAULT_CHAIN_ID,
         address: account.address,
         loader,
+        explorer: CHAIN_DATA[DEFAULT_CHAIN_ID],
       });
       this.setState({ showModal: false, providerSelected: Provider.menu });
     }
@@ -155,20 +156,26 @@ class WalletConnect extends React.Component {
 
   render() {
     const BTN_MSG = this.props.btnName || "CONNECT";
-    const BTN_CLASS = this.props.btnClass || "btn nav-link";
+    const BTN_CLASS = this.props.btnClass || "btn btn-rounded btn-info";
     const disabled = this.props.disabled || false;
+    let parentClass = "xdc-connect";
+    parentClass += " darkTheme";
+
+    if (this.props.darkTheme) {
+      parentClass += " darkTheme";
+    }
 
     return (
-      <div className="xdc-connect">
-        <div
+      <div className={parentClass}>
+        <Button
           className={BTN_CLASS}
           onClick={() => this.setState({ showModal: true })}
           disabled={disabled}
         >
           {BTN_MSG}
-        </div>
+        </Button>
         <Modal
-          className="xdc-connect"
+          className={parentClass}
           centered={true}
           show={this.state.showModal}
           onHide={() => this.setState({ showModal: false })}

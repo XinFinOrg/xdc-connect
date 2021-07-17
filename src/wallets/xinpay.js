@@ -3,7 +3,7 @@ import detectEthereumProvider from "@metamask/detect-provider";
 import _ from "lodash";
 
 import { GetRevertReason, IsJsonRpcError } from "../helpers/crypto";
-import { HTTP_PROVIDER, LOADERS } from "../helpers/constant";
+import { CHAIN_DATA, HTTP_PROVIDER, LOADERS } from "../helpers/constant";
 
 import * as actions from "../actions";
 import store from "../redux/store";
@@ -77,6 +77,7 @@ export async function initXdc3() {
         address: accounts[0],
         chain_id,
         loader: LOADERS.Xinpay,
+        explorer: CHAIN_DATA[chain_id],
       })
     );
   } catch (e) {
@@ -119,6 +120,7 @@ export function _initListerner() {
         address: accounts[0],
         chain_id,
         loader: LOADERS.Xinpay,
+        explorer: CHAIN_DATA[chain_id],
       })
     );
   });
@@ -193,14 +195,25 @@ export async function SendTransaction(tx) {
 
         tx["gas"] = gasLimit;
 
-        xdc3.eth.sendTransaction(tx).once("receipt", (receipt) => {
-          if (receipt !== null) {
-            if (receipt.status) {
-              resolve(receipt);
-            } else {
-              reject(receipt);
+        xdc3.eth.sendTransaction(tx, (err, hash) => {
+          if (err) reject(err);
+          let interval = setInterval(async () => {
+            try {
+              const receipt = await xdc3.eth.getTransactionReceipt(hash);
+              if (receipt !== null) {
+                if (receipt.status) {
+                  clearInterval(interval);
+                  resolve(receipt);
+                } else {
+                  clearInterval(interval);
+                  reject(receipt);
+                }
+              }
+            } catch (e) {
+              clearInterval(interval);
+              reject(e);
             }
-          }
+          }, 2000);
         });
       })
       .catch((e) => {

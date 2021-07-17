@@ -14,6 +14,8 @@ export const NETWORK_NAME = {
 };
 
 export const CHAIN_DATA = {
+  "0x32": "https://explorer.xinfin.network",
+  "0x33": "https://explorer.apothem.network",
   50: "https://explorer.xinfin.network",
   51: "https://explorer.apothem.network",
 };

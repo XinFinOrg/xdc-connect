@@ -25,7 +25,15 @@ XdcConnect.propTypes = {
   onConnect: PropTypes.func,
   onDisconnect: PropTypes.func,
   onAddressChange: PropTypes.func,
-  onWalletData: PropTypes.func,
+  btnName: PropTypes.string,
+  btnClass: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+XdcConnect.defaultProps = {
+  btnName: "CONNECT",
+  btnClass: "btn btn-rounded btn-info",
+  disabled: false,
 };
 
 export const GetWallet = () => {
@@ -43,3 +51,7 @@ export const CallTransaction = (tx) => {
 export const Disconnect = () => {
   store.dispatch(actions.WalletDisconnected());
 };
+
+export const GetNativeBalance = () => {
+  return Wallet.GetNativeBalance();
+}

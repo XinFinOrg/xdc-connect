@@ -2,7 +2,7 @@ import Xdc3 from "xdc3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { toast } from "react-toastify";
 
-import { LOADERS } from "../helpers/constant";
+import { CHAIN_DATA, LOADERS } from "../helpers/constant";
 
 import { GetRevertReason, IsJsonRpcError } from "../helpers/crypto";
 import * as actions from "../actions";
@@ -43,6 +43,7 @@ export const initDcent = async () => {
         address: accounts[0],
         chain_id,
         loader: LOADERS.DcentInApp,
+        explorer: CHAIN_DATA[chain_id],
       })
     );
   } catch (e) {
@@ -72,6 +73,7 @@ export function _initListerner() {
         address: accounts[0],
         chain_id,
         loader: LOADERS.DcentInApp,
+        explorer: CHAIN_DATA[chain_id],
       })
     );
   });
