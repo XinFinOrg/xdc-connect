@@ -15,6 +15,8 @@ var _crypto = require("../../helpers/crypto");
 
 var _common = require("../common");
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -44,15 +46,18 @@ var PrivateKey = function PrivateKey(_ref) {
       setPrivateKey = _useState2[1];
 
   function renderMessage() {
-    if (_lodash.default.isEmpty(privateKey)) return /*#__PURE__*/_react.default.createElement("div", {
-      className: "no-key"
-    }, "\xA0");
+    if (_lodash.default.isEmpty(privateKey)) return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "no-key",
+      children: "\xA0"
+    });
     var isValid = (0, _crypto.VerifyPrivateKey)(privateKey);
-    if (isValid) return /*#__PURE__*/_react.default.createElement("div", {
-      className: "valid-private-key"
-    }, "Private Key is valid");else if (isValid === false) return /*#__PURE__*/_react.default.createElement("div", {
-      className: "invalid-private-key"
-    }, "Invalid Private Key");
+    if (isValid) return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "valid-private-key",
+      children: "Private Key is valid"
+    });else if (isValid === false) return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "invalid-private-key",
+      children: "Invalid Private Key"
+    });
   }
 
   var btnName = "Submit";
@@ -61,45 +66,57 @@ var PrivateKey = function PrivateKey(_ref) {
     btnName = _common.LOADER_BOX;
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-content"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-header border-bottom-0"
-  }, /*#__PURE__*/_react.default.createElement("h5", {
-    className: "modal-title",
-    id: "exampleModalLabel"
-  }, "Connect with Private Key")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-body"
-  }, /*#__PURE__*/_react.default.createElement("form", {
-    className: ""
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/_react.default.createElement("label", null, "Enter Private Key"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "password",
-    className: "form-control",
-    placeholder: "Enter Private Key",
-    value: privateKey,
-    onChange: function onChange(x) {
-      return setPrivateKey(x.target.value);
-    }
-  })), /*#__PURE__*/_react.default.createElement("div", {
-    className: "private-key__message"
-  }, renderMessage()), /*#__PURE__*/_react.default.createElement("button", {
-    onClick: function onClick(e) {
-      e.preventDefault();
-      var account = (0, _crypto.GetAccountFromPK)(privateKey);
-      cb(account);
-    },
-    disabled: loading,
-    className: "btn btn-rounded btn-info mb-2"
-  }, btnName), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-footer border-top-0 d-flex justify-content-center"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    onClick: back,
-    type: "button",
-    className: "back",
-    "data-dismiss": "modal"
-  }, "Back")));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: "modal-content",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "modal-header border-bottom-0",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h5", {
+        className: "modal-title",
+        id: "exampleModalLabel",
+        children: "Connect with Private Key"
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "modal-body",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("form", {
+        className: "",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+            children: "Enter Private Key"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+            type: "password",
+            className: "form-control",
+            placeholder: "Enter Private Key",
+            value: privateKey,
+            onChange: function onChange(x) {
+              return setPrivateKey(x.target.value);
+            }
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: "private-key__message",
+          children: renderMessage()
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+          onClick: function onClick(e) {
+            e.preventDefault();
+            var account = (0, _crypto.GetAccountFromPK)(privateKey);
+            cb(account);
+          },
+          disabled: loading,
+          className: "btn btn-rounded btn-info mb-2",
+          children: btnName
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {})]
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "modal-footer border-top-0 d-flex justify-content-center",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+        onClick: back,
+        type: "button",
+        className: "back",
+        "data-dismiss": "modal",
+        children: "Back"
+      })
+    })]
+  });
 };
 
 var _default = PrivateKey;

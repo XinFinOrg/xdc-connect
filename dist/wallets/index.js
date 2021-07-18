@@ -24,6 +24,8 @@ var _constant = require("../helpers/constant");
 
 var _crypto = require("../helpers/crypto");
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -78,11 +80,14 @@ var SendTransaction = function SendTransaction(tx) {
     return GetFuncFromLoader(loader).SendTransaction(tx).then(function (resp) {
       if (resp.transactionHash) {
         var transactionHash = resp.transactionHash;
-        (0, _reactToastify.toast)( /*#__PURE__*/React.createElement("div", null, "Sucsess\xA0", /*#__PURE__*/React.createElement("a", {
-          href: (0, _crypto.BUILD_TX_LINK)(_constant.EXPLORER, transactionHash),
-          rel: "noreferrer",
-          target: "_blank"
-        }, "HASH")), {
+        (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          children: ["Sucsess\xA0", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+            href: (0, _crypto.BUILD_TX_LINK)(_constant.EXPLORER, transactionHash),
+            rel: "noreferrer",
+            target: "_blank",
+            children: "HASH"
+          })]
+        }), {
           position: "bottom-right",
           type: "success-tx",
           autoClose: false,
@@ -99,8 +104,14 @@ var SendTransaction = function SendTransaction(tx) {
     }).catch(function (e) {
       console.log("resp", (0, _crypto.IsJsonRpcError)(e));
       console.log("resp", e, e.message);
-      var message = e.message || /*#__PURE__*/React.createElement(React.Fragment, null, "Failing Transaction");
-      (0, _reactToastify.toast)( /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Error"), ":", message), {
+      var message = e.message || /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
+        children: "Failing Transaction"
+      });
+      (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("b", {
+          children: "Error"
+        }), ":", message]
+      }), {
         position: "bottom-right",
         type: "error",
         autoClose: false,

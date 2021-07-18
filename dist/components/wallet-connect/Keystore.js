@@ -11,6 +11,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _crypto = require("../../helpers/crypto");
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -48,15 +50,17 @@ var ImportFromFilerBodyComponent = function ImportFromFilerBodyComponent(_ref) {
     fileReader.readAsText(file);
   };
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("input", {
-    className: "form-file-input form-control",
-    type: "file",
-    id: "input-file",
-    accept: ".json",
-    onChange: function onChange(e) {
-      return handleFileChosen(e.target.files[0]);
-    }
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+      className: "form-file-input form-control",
+      type: "file",
+      id: "input-file",
+      accept: ".json",
+      onChange: function onChange(e) {
+        return handleFileChosen(e.target.files[0]);
+      }
+    })
+  });
 };
 
 var Keystore = function Keystore(_ref2) {
@@ -78,55 +82,68 @@ var Keystore = function Keystore(_ref2) {
       statusMessage = _useState6[0],
       setStatusMessage = _useState6[1];
 
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-content"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-header border-bottom-0"
-  }, /*#__PURE__*/_react.default.createElement("h5", {
-    className: "modal-title",
-    id: "exampleModalLabel"
-  }, "Connect with Key Store")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-body"
-  }, /*#__PURE__*/_react.default.createElement("form", {
-    className: ""
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/_react.default.createElement(ImportFromFilerBodyComponent, {
-    cb: setKeystore
-  })), /*#__PURE__*/_react.default.createElement("div", {
-    className: ""
-  }, statusMessage), /*#__PURE__*/_react.default.createElement("div", {
-    className: "form-group"
-  }, /*#__PURE__*/_react.default.createElement("label", null, "Password"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "password",
-    className: "form-control",
-    placeholder: "Enter Password",
-    value: pwd,
-    onChange: function onChange(x) {
-      return setPwd(x.target.value);
-    }
-  })), /*#__PURE__*/_react.default.createElement("button", {
-    className: "btn btn-rounded btn-info mb-2",
-    onClick: function onClick(e) {
-      e.preventDefault();
-      var account = (0, _crypto.GetAccountFromKeystore)(keystore, pwd);
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: "modal-content",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "modal-header border-bottom-0",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h5", {
+        className: "modal-title",
+        id: "exampleModalLabel",
+        children: "Connect with Key Store"
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "modal-body",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("form", {
+        className: "",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: "form-group",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ImportFromFilerBodyComponent, {
+            cb: setKeystore
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: "",
+          children: statusMessage
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+            children: "Password"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+            type: "password",
+            className: "form-control",
+            placeholder: "Enter Password",
+            value: pwd,
+            onChange: function onChange(x) {
+              return setPwd(x.target.value);
+            }
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+          className: "btn btn-rounded btn-info mb-2",
+          onClick: function onClick(e) {
+            e.preventDefault();
+            var account = (0, _crypto.GetAccountFromKeystore)(keystore, pwd);
 
-      if (account === null) {
-        setStatusMessage("Invalid Password / Keystore");
-      } else {
-        setStatusMessage("Successfully got the account");
-      }
+            if (account === null) {
+              setStatusMessage("Invalid Password / Keystore");
+            } else {
+              setStatusMessage("Successfully got the account");
+            }
 
-      cb(account);
-    }
-  }, "Submit"), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-footer border-top-0 d-flex justify-content-center"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    onClick: back,
-    type: "button",
-    className: "back",
-    "data-dismiss": "modal"
-  }, "Back")));
+            cb(account);
+          },
+          children: "Submit"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {})]
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: "modal-footer border-top-0 d-flex justify-content-center",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+        onClick: back,
+        type: "button",
+        className: "back",
+        "data-dismiss": "modal",
+        children: "Back"
+      })
+    })]
+  });
 };
 
 var _default = Keystore;

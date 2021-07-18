@@ -35,6 +35,8 @@ var _constant = require("../../helpers/constant");
 
 var actions = _interopRequireWildcard(require("../../actions"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -133,77 +135,104 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
     value: function RenderWalletProvider() {
       var _this2 = this;
 
-      if (this.state.providerSelected === Provider.menu) return /*#__PURE__*/_react.default.createElement("div", {
-        className: "modal-content"
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "modal-header border-bottom-0"
-      }, /*#__PURE__*/_react.default.createElement("h5", {
-        className: "modal-title",
-        id: "exampleModalLabel"
-      }, "Connect to a wallet"), /*#__PURE__*/_react.default.createElement("button", {
-        type: "button",
-        className: "close",
-        onClick: function onClick() {
-          return _this2.setState({
-            showModal: false
-          });
-        }
-      }, /*#__PURE__*/_react.default.createElement("span", {
-        "aria-hidden": "true"
-      }, "\xD7"))), /*#__PURE__*/_react.default.createElement("div", {
-        className: "modal-body"
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "wallet-connect-block"
-      }, /*#__PURE__*/_react.default.createElement("button", {
-        onClick: _xinpay.initXdc3,
-        className: "wallect-connect-btn"
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "wallet-name"
-      }, /*#__PURE__*/_react.default.createElement("h4", null, "XinPay")), /*#__PURE__*/_react.default.createElement("div", {
-        className: "wallet-icon"
-      }, /*#__PURE__*/_react.default.createElement("img", {
-        src: _xinpayLogo.default,
-        alt: "Icon"
-      }))), /*#__PURE__*/_react.default.createElement("button", {
-        className: "wallect-connect-btn",
-        onClick: function onClick() {
-          return _this2.setState({
-            providerSelected: Provider.privateKey
-          });
-        }
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "wallet-name"
-      }, /*#__PURE__*/_react.default.createElement("h4", null, "Private Key")), /*#__PURE__*/_react.default.createElement("div", {
-        className: "wallet-icon"
-      }, /*#__PURE__*/_react.default.createElement("img", {
-        src: _privatekeyLogo.default,
-        alt: "Icon"
-      }))), /*#__PURE__*/_react.default.createElement("button", {
-        className: "wallect-connect-btn",
-        onClick: function onClick() {
-          return _this2.setState({
-            providerSelected: Provider.keystore
-          });
-        }
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "wallet-name"
-      }, /*#__PURE__*/_react.default.createElement("h4", null, "Key Store")), /*#__PURE__*/_react.default.createElement("div", {
-        className: "wallet-icon"
-      }, /*#__PURE__*/_react.default.createElement("img", {
-        src: _keystoreLogo.default,
-        alt: "Icon"
-      }))), /*#__PURE__*/_react.default.createElement("button", {
-        className: "wallect-connect-btn",
-        onClick: _dcentInAppBrowser.initDcent
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "wallet-name"
-      }, /*#__PURE__*/_react.default.createElement("h4", null, "D'CENT")), /*#__PURE__*/_react.default.createElement("div", {
-        className: "wallet-icon"
-      }, /*#__PURE__*/_react.default.createElement("img", {
-        src: _dcentLogo.default,
-        alt: "Icon"
-      }))))));
-      if (this.state.providerSelected === Provider.keystore) return /*#__PURE__*/_react.default.createElement(_Keystore.default, {
+      if (this.state.providerSelected === Provider.menu) return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: "modal-content",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          className: "modal-header border-bottom-0",
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("h5", {
+            className: "modal-title",
+            id: "exampleModalLabel",
+            children: "Connect to a wallet"
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+            type: "button",
+            className: "close",
+            onClick: function onClick() {
+              return _this2.setState({
+                showModal: false
+              });
+            },
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              "aria-hidden": "true",
+              children: "\xD7"
+            })
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: "modal-body",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            className: "wallet-connect-block",
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+              onClick: _xinpay.initXdc3,
+              className: "wallect-connect-btn",
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+                className: "wallet-name",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h4", {
+                  children: "XinPay"
+                })
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+                className: "wallet-icon",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+                  src: _xinpayLogo.default,
+                  alt: "Icon"
+                })
+              })]
+            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+              className: "wallect-connect-btn",
+              onClick: function onClick() {
+                return _this2.setState({
+                  providerSelected: Provider.privateKey
+                });
+              },
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+                className: "wallet-name",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h4", {
+                  children: "Private Key"
+                })
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+                className: "wallet-icon",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+                  src: _privatekeyLogo.default,
+                  alt: "Icon"
+                })
+              })]
+            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+              className: "wallect-connect-btn",
+              onClick: function onClick() {
+                return _this2.setState({
+                  providerSelected: Provider.keystore
+                });
+              },
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+                className: "wallet-name",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h4", {
+                  children: "Key Store"
+                })
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+                className: "wallet-icon",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+                  src: _keystoreLogo.default,
+                  alt: "Icon"
+                })
+              })]
+            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+              className: "wallect-connect-btn",
+              onClick: _dcentInAppBrowser.initDcent,
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+                className: "wallet-name",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h4", {
+                  children: "D'CENT"
+                })
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+                className: "wallet-icon",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+                  src: _dcentLogo.default,
+                  alt: "Icon"
+                })
+              })]
+            })]
+          })
+        })]
+      });
+      if (this.state.providerSelected === Provider.keystore) return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Keystore.default, {
         back: function back() {
           return _this2.setState({
             providerSelected: Provider.menu
@@ -211,7 +240,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
         },
         cb: this.accountCallback(Provider.keystore)
       });
-      if (this.state.providerSelected === Provider.privateKey) return /*#__PURE__*/_react.default.createElement(_PrivateKey.default, {
+      if (this.state.providerSelected === Provider.privateKey) return /*#__PURE__*/(0, _jsxRuntime.jsx)(_PrivateKey.default, {
         back: function back() {
           return _this2.setState({
             providerSelected: Provider.menu
@@ -235,26 +264,29 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
         parentClass += " darkTheme";
       }
 
-      return /*#__PURE__*/_react.default.createElement("div", {
-        className: parentClass
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
-        className: BTN_CLASS,
-        onClick: function onClick() {
-          return _this3.setState({
-            showModal: true
-          });
-        },
-        disabled: disabled
-      }, BTN_MSG), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Modal, {
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: parentClass,
-        centered: true,
-        show: this.state.showModal,
-        onHide: function onHide() {
-          return _this3.setState({
-            showModal: false
-          });
-        }
-      }, this.RenderWalletProvider()));
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBootstrap.Button, {
+          className: BTN_CLASS,
+          onClick: function onClick() {
+            return _this3.setState({
+              showModal: true
+            });
+          },
+          disabled: disabled,
+          children: BTN_MSG
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBootstrap.Modal, {
+          className: parentClass,
+          centered: true,
+          show: this.state.showModal,
+          onHide: function onHide() {
+            return _this3.setState({
+              showModal: false
+            });
+          },
+          children: this.RenderWalletProvider()
+        })]
+      });
     }
   }]);
 

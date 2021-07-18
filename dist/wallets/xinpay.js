@@ -32,6 +32,8 @@ var _store = _interopRequireDefault(require("../redux/store"));
 
 var _reactToastify = require("react-toastify");
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -158,9 +160,12 @@ function _initXdc() {
               break;
             }
 
-            (0, _reactToastify.toast)( /*#__PURE__*/React.createElement("div", null, "XinPay not available in the browser. Please refer ", /*#__PURE__*/React.createElement("a", {
-              href: "/"
-            }, "here")), {
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+              children: ["XinPay not available in the browser. Please refer ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+                href: "/",
+                children: "here"
+              })]
+            }), {
               autoClose: 2000
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
@@ -177,9 +182,12 @@ function _initXdc() {
               break;
             }
 
-            (0, _reactToastify.toast)( /*#__PURE__*/React.createElement("div", null, "XinPay not available in the browser. Please refer ", /*#__PURE__*/React.createElement("a", {
-              href: "/"
-            }, "here")), {
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+              children: ["XinPay not available in the browser. Please refer ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+                href: "/",
+                children: "here"
+              })]
+            }), {
               autoClose: 2000
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));

@@ -15,6 +15,8 @@ require("./style.css");
 
 var _listener = _interopRequireDefault(require("./docs/listener.mdx"));
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -45,7 +47,59 @@ var _default = {
 exports.default = _default;
 
 function RenderWallet(wallet) {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("table", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, "address"), /*#__PURE__*/_react.default.createElement("td", null, wallet.address)), /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, "connected"), /*#__PURE__*/_react.default.createElement("td", null, "".concat(wallet.connected))), /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, "chain_id"), /*#__PURE__*/_react.default.createElement("td", null, wallet.chain_id)), /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, "valid_network"), /*#__PURE__*/_react.default.createElement("td", null, "".concat(wallet.valid_network))), /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, "explorer"), /*#__PURE__*/_react.default.createElement("td", null, wallet.explorer)), /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, "rpc_provider"), /*#__PURE__*/_react.default.createElement("td", null, wallet.rpc_provider)), /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, "loader"), /*#__PURE__*/_react.default.createElement("td", null, wallet.loader)), /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", null, "account"), /*#__PURE__*/_react.default.createElement("td", null, wallet.account))));
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("table", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("tr", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: "address"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: wallet.address
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("tr", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: "connected"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: "".concat(wallet.connected)
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("tr", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: "chain_id"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: wallet.chain_id
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("tr", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: "valid_network"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: "".concat(wallet.valid_network)
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("tr", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: "explorer"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: wallet.explorer
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("tr", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: "rpc_provider"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: wallet.rpc_provider
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("tr", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: "loader"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: wallet.loader
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("tr", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: "account"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
+          children: wallet.account
+        })]
+      })]
+    })
+  });
 }
 
 var Template = function Template(events) {
@@ -67,16 +121,18 @@ var Template = function Template(events) {
   (0, _react.useEffect)(function () {
     (0, _components.Disconnect)();
   });
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_components.XdcConnect, {
-    onConnect: function onConnect(wallet) {
-      setbtnText("conneected !");
-      setbtnClass("btn btn-success");
-      setWallet(wallet);
-      events.onConnect && events.onConnect(wallet);
-    },
-    btnName: btnText,
-    btnClass: btnClass
-  }), wallet.connected ? RenderWallet(wallet) : "");
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_components.XdcConnect, {
+      onConnect: function onConnect(wallet) {
+        setbtnText("conneected !");
+        setbtnClass("btn btn-success");
+        setWallet(wallet);
+        events.onConnect && events.onConnect(wallet);
+      },
+      btnName: btnText,
+      btnClass: btnClass
+    }), wallet.connected ? RenderWallet(wallet) : ""]
+  });
 };
 
 var Listeners = Template.bind({});
