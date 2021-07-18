@@ -1,0 +1,8 @@
+@import "./variables";
+
+.xdc-connect {
+  @import "./modal";
+  @import "./wallet-connect";
+  @import "./notification";
+  @import "./vendor/bootstrap.css";
+}

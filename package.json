@@ -1,6 +1,6 @@
 {
   "name": "xdc-connect",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "private": false,
   "files": [
@@ -39,7 +39,7 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -o ./docs",
     "clean": "rimraf dist",
-    "compile": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__,mdx"
+    "compile": "npm run clean && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__,mdx"
   },
   "eslintConfig": {
     "extends": [

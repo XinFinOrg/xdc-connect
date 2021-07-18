@@ -1,0 +1,43 @@
+<!-- Custom-MDX-Documentation.mdx -->
+
+import { ArgsTable } from "@storybook/addon-docs";
+
+import { XdcConnect } from "../../components";
+
+# Xdc Connect - `Functionality`
+
+This documentation enlists the various event listeners & interface APIs exported from `xdc-connect`
+
+## Listeners
+
+XDC-CONNECT allows user to listen for state changes by providing the listeners as `props`.  
+Currently you can listen for the following updates in your component :
+
+1. On Wallet Connect - `onConnect`
+2. On Wallet Disconnect - `onDisconnect`
+3. On Address Change - `onAddressChange`
+
+Each listener will be called with a parameter of `wallet` which represents the state of the connected xdc wallet post the event trigger.
+
+### On Connect
+
+Event is triggered when any of the loader successfully connects with application. The listener willl be called with an `wallet` object.
+
+### On Disconnect
+
+Event is triggered when any of the loader successfully disconnects with application. The listener willl be called with an `wallet` object.
+
+### On Address Change
+
+Event is triggered when any of the loader changes the default **XDC** address. The listener willl be called with an `wallet` object.
+
+## APIs
+
+1. **GetWallet** - returns promise which will resolve into `wallet` object.
+2. **GetNativeBalance** - returns promise which will resolve into xdc balance.
+3. **SendTransaction** - returns promise which will resolve into xdc3 `receipt` for the transaction.
+4. **CallTransaction** - returns promise which will resolve into response for the transaction.
+
+## Arguments
+
+<ArgsTable of={XdcConnect} />

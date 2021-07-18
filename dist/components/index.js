@@ -23,7 +23,7 @@ var Wallet = _interopRequireWildcard(require("../wallets"));
 
 var actions = _interopRequireWildcard(require("../actions/index"));
 
-require("../../assets/scss/main.scss");
+require("../assets/scss/main.scss");
 
 require("react-toastify/dist/ReactToastify.css");
 

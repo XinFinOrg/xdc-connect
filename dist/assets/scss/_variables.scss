@@ -1,0 +1,99 @@
+:root {
+  --background-color: #f7f7f7;
+  --text-color: #747474;
+  --theme-table-hover-shadow: 0 0.2rem 0.75rem rgba(8, 16, 22, 0.1);
+  --rgba-primary-1: rgba(34, 88, 191, 0.1);
+  --rgba-primary-2: rgba(34, 88, 191, 0.2);
+  --rgba-primary-3: rgba(34, 88, 191, 0.3);
+  --rgba-primary-4: rgba(34, 88, 191, 0.4);
+  --rgba-primary-5: rgba(34, 88, 191, 0.5);
+  --rgba-dark-1: rgba(0, 0, 0, 0.1);
+  --rgba-dark-2: rgba(0, 0, 0, 0.2);
+  --rgba-dark-3: rgba(0, 0, 0, 0.3);
+  --rgba-dark-4: rgba(0, 0, 0, 0.4);
+  --rgba-dark-5: rgba(0, 0, 0, 0.5);
+  --white: #ffffff;
+  --light: #f9fafd;
+  --dark: #343a40;
+  --black: #000000;
+  --blue: #4a86fe;
+  --light-blue: #eff3f6;
+  --dark-blue: #386396;
+  --indigo: #6610f2;
+  --light-pink: #fff6fa;
+  --pink: #f672a7;
+  --red: #f1556c;
+  --yellow: #f2cb46;
+  --green: #25cdad;
+  --dark-green: #107764;
+  --teal: #20c997;
+  --white: #fff;
+  --grey: #6c757d;
+  --dark-grey: #343a40;
+  --light-grey: #cbd3d8;
+  --light: #ebedf2;
+  --primary: #7460ee;
+  --secondary: #6c757d;
+  --success: #36bea6;
+  --info: #2962ff;
+  --warning: #ffbc34;
+  --danger: #f62d51;
+  --cyan: #4fc3f7;
+  --orange: #fb8c00;
+  --purple: #7460ee;
+  --purple-grey: #585d68;
+}
+
+
+$color-primary: #2a3f4c;
+$color-primary-light: lighten($color-primary, 10%);
+$color-primary-lighter: lighten($color-primary, 50%);
+
+$color-background-primary: whitesmoke;
+$color-background-primary-light: lighten($color-background-primary, 10%);
+$color-background-primary-lighter: lighten($color-background-primary, 50%);
+
+$font-color-primary: $color-primary;
+
+$color-blue-dull: #355f7d;
+$color-orange-dull:#c97539;
+
+$color-light-grey: lightgrey;
+$color-light-grey-light: #cdcdcd;
+$color-grey-light-1: #f7f7f7;
+$color-grey-dark: #777;
+$color-white: #ffffff;
+$color-black: #000;
+
+$color-new-blue: #007bff;
+$color-new-green: #25ac37;
+$color-new-red: #ff0000;
+$color-new-orange: #ff8c00;
+$color-new-yellow:#ffc107;
+
+$color-light-blue: #70d6ff;
+$color-very-light-blue: #f8f9fa;
+
+$typo-scale-ratio: 8/9;
+
+$overall-font-primary: 1.5rem;
+$overall-font-secondary: #{$overall-font-primary * $typo-scale-ratio};
+
+$table-one-font-primary: 1.6rem;
+$table-one-font-secondary: #{$table-one-font-primary * $typo-scale-ratio};
+
+$footer-primary: 2.2rem;
+$footer-links: 1.6rem;
+$footer-secondary: 1.4rem;
+
+$header-height: 5rem;
+$sidebar-width: 18rem;
+$sidebar-width-collapsed: 5.5rem;
+$sidebar-scroller-width: 0.75rem;
+$sidebar-transition: 0.5s;
+
+$lg-width: 992px;
+$md-width: 762px;
+$sm-width: 580px;
+
+$sidebar-element-hgt: 3.5rem;
