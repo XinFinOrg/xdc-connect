@@ -15,13 +15,13 @@ var _reactRedux = require("react-redux");
 
 var _reactToastify = require("react-toastify");
 
-var _walletConnect = _interopRequireDefault(require("./walletConnect"));
+var _walletConnect = _interopRequireDefault(require("./wallet-connect/walletConnect"));
 
-var _store = _interopRequireDefault(require("../../redux/store"));
+var _store = _interopRequireDefault(require("../redux/store"));
 
-var Wallet = _interopRequireWildcard(require("../../wallets"));
+var Wallet = _interopRequireWildcard(require("../wallets"));
 
-var actions = _interopRequireWildcard(require("../../actions/index"));
+var actions = _interopRequireWildcard(require("../actions/index"));
 
 require("../../assets/scss/main.scss");
 

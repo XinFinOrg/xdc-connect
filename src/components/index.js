@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
-import WalletConnect from "./walletConnect";
+import WalletConnect from "./wallet-connect/walletConnect";
 
-import store from "../../redux/store";
-import * as Wallet from "../../wallets";
-import * as actions from "../../actions/index";
+import store from "../redux/store";
+import * as Wallet from "../wallets";
+import * as actions from "../actions/index";
 
-import "../../assets/scss/main.scss";
+import "../assets/scss/main.scss";
 import "react-toastify/dist/ReactToastify.css";
 
 export const XdcConnect = (props) => {

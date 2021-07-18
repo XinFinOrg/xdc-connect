@@ -4,7 +4,7 @@ import {
   XdcConnect,
   GetWallet,
   Disconnect,
-} from "../components/wallet-connect";
+} from "../components";
 
 import "./style.css";
 

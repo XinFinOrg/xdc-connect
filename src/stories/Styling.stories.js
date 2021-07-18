@@ -1,6 +1,6 @@
 import React from "react";
 
-import { XdcConnect } from "../components/wallet-connect";
+import { XdcConnect } from "../components";
 
 export default {
   title: "XdcConnect/Styling",
