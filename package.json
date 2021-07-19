@@ -7,6 +7,7 @@
     "dist",
     "README.md"
   ],
+  "types": "./src/components/index.d.ts",
   "dependencies": {
     "@metamask/detect-provider": "^1.2.0",
     "@testing-library/jest-dom": "^5.11.4",

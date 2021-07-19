@@ -9,6 +9,8 @@ exports.Listeners = exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _xdc3Utils = require("xdc3-utils");
+
 var _components = require("../components");
 
 require("./style.css");
@@ -53,7 +55,7 @@ function RenderWallet(wallet) {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
           children: "address"
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
-          children: wallet.address
+          children: (0, _xdc3Utils.toXdcAddress)(wallet.address)
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("tr", {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("td", {
