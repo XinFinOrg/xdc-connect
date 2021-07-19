@@ -9,6 +9,7 @@ module.exports = function (api) {
         runtime: "automatic",
       },
     ],
+    "@mdx-js/loader",
   ];
   const plugins = ["macros"];
 
