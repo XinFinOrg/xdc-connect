@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { toXdcAddress } from "xdc3-utils";
 
-import {
-  XdcConnect,
-  GetWallet,
-  Disconnect,
-} from "../components";
+import { XdcConnect, GetWallet, Disconnect } from "../components";
 
 import "./style.css";
 
@@ -26,7 +23,7 @@ function RenderWallet(wallet) {
       <table>
         <tr>
           <td>address</td>
-          <td>{wallet.address}</td>
+          <td>{toXdcAddress(wallet.address)}</td>
         </tr>
         <tr>
           <td>connected</td>
