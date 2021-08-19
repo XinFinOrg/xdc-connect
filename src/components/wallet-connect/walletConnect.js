@@ -98,40 +98,40 @@ class WalletConnect extends React.Component {
                   <img src={XinpayLogo} alt="Icon" />
                 </div>
               </button>
-              <button
-                className="wallect-connect-btn"
-                onClick={() =>
-                  this.setState({ providerSelected: Provider.privateKey })
-                }
-              >
-                <div className="wallet-name">
-                  <h4>Private Key</h4>
-                </div>
-                <div className="wallet-icon">
-                  <img src={PrivateKeyLogo} alt="Icon" />
-                </div>
-              </button>
-              <button
-                className="wallect-connect-btn"
-                onClick={() =>
-                  this.setState({ providerSelected: Provider.keystore })
-                }
-              >
-                <div className="wallet-name">
-                  <h4>Key Store</h4>
-                </div>
-                <div className="wallet-icon">
-                  <img src={KeystoreLogo} alt="Icon" />
-                </div>
-              </button>
-              <button className="wallect-connect-btn" onClick={initDcent}>
-                <div className="wallet-name">
-                  <h4>D'CENT</h4>
-                </div>
-                <div className="wallet-icon">
-                  <img src={DcentLogo} alt="Icon" />
-                </div>
-              </button>
+              {/*<button*/}
+              {/*  className="wallect-connect-btn"*/}
+              {/*  onClick={() =>*/}
+              {/*    this.setState({ providerSelected: Provider.privateKey })*/}
+              {/*  }*/}
+              {/*>*/}
+              {/*  <div className="wallet-name">*/}
+              {/*    <h4>Private Key</h4>*/}
+              {/*  </div>*/}
+              {/*  <div className="wallet-icon">*/}
+              {/*    <img src={PrivateKeyLogo} alt="Icon" />*/}
+              {/*  </div>*/}
+              {/*</button>*/}
+              {/*<button*/}
+              {/*  className="wallect-connect-btn"*/}
+              {/*  onClick={() =>*/}
+              {/*    this.setState({ providerSelected: Provider.keystore })*/}
+              {/*  }*/}
+              {/*>*/}
+              {/*  <div className="wallet-name">*/}
+              {/*    <h4>Key Store</h4>*/}
+              {/*  </div>*/}
+              {/*  <div className="wallet-icon">*/}
+              {/*    <img src={KeystoreLogo} alt="Icon" />*/}
+              {/*  </div>*/}
+              {/*</button>*/}
+              {/*<button className="wallect-connect-btn" onClick={initDcent}>*/}
+              {/*  <div className="wallet-name">*/}
+              {/*    <h4>D'CENT</h4>*/}
+              {/*  </div>*/}
+              {/*  <div className="wallet-icon">*/}
+              {/*    <img src={DcentLogo} alt="Icon" />*/}
+              {/*  </div>*/}
+              {/*</button>*/}
             </div>
           </div>
         </div>
