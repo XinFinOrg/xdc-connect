@@ -90,14 +90,14 @@ class WalletConnect extends React.Component {
           </div>
           <div className="modal-body">
             <div className="wallet-connect-block">
-              <button onClick={initXdc3} className="wallect-connect-btn">
-                <div className="wallet-name">
-                  <h4>XinPay</h4>
-                </div>
-                <div className="wallet-icon">
-                  <img src={XinpayLogo} alt="Icon" />
-                </div>
-              </button>
+              {/*<button onClick={initXdc3} className="wallect-connect-btn">*/}
+              {/*  <div className="wallet-name">*/}
+              {/*    <h4>XinPay</h4>*/}
+              {/*  </div>*/}
+              {/*  <div className="wallet-icon">*/}
+              {/*    <img src={XinpayLogo} alt="Icon" />*/}
+              {/*  </div>*/}
+              {/*</button>*/}
               {/*<button*/}
               {/*  className="wallect-connect-btn"*/}
               {/*  onClick={() =>*/}
