@@ -90,14 +90,14 @@ class WalletConnect extends React.Component {
           </div>
           <div className="modal-body">
             <div className="wallet-connect-block">
-              {/*<button onClick={initXdc3} className="wallect-connect-btn">*/}
-              {/*  <div className="wallet-name">*/}
-              {/*    <h4>XinPay</h4>*/}
-              {/*  </div>*/}
-              {/*  <div className="wallet-icon">*/}
-              {/*    <img src={XinpayLogo} alt="Icon" />*/}
-              {/*  </div>*/}
-              {/*</button>*/}
+              <button onClick={initXdc3} className="wallect-connect-btn">
+                <div className="wallet-name">
+                  <h4>XinPay</h4>
+                </div>
+                <div className="wallet-icon">
+                  <img src={XinpayLogo} alt="Icon" />
+                </div>
+              </button>
               {/*<button*/}
               {/*  className="wallect-connect-btn"*/}
               {/*  onClick={() =>*/}
@@ -169,19 +169,19 @@ class WalletConnect extends React.Component {
       <div className={parentClass}>
         <Button
           className={BTN_CLASS}
-          onClick={() => this.setState({ showModal: true })}
+          onClick={() => initXdc3()}
           disabled={disabled}
         >
           {BTN_MSG}
         </Button>
-        <Modal
-          className={parentClass}
-          centered={true}
-          show={this.state.showModal}
-          onHide={() => this.setState({ showModal: false })}
-        >
-          {this.RenderWalletProvider()}
-        </Modal>
+        {/*<Modal*/}
+        {/*  className={parentClass}*/}
+        {/*  centered={true}*/}
+        {/*  show={this.state.showModal}*/}
+        {/*  onHide={() => this.setState({ showModal: false })}*/}
+        {/*>*/}
+        {/*  {this.RenderWalletProvider()}*/}
+        {/*</Modal>*/}
       </div>
     );
   }

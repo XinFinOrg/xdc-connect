@@ -7,9 +7,8 @@ module.exports = function (api) {
       "@babel/preset-react",
       {
         runtime: "automatic",
-      },
+      }, "@mdx-js/loader",
     ],
-    // "@mdx-js/loader",
   ];
   const plugins = ["macros"];
 

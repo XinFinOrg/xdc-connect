@@ -159,7 +159,23 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           className: "modal-body",
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            className: "wallet-connect-block"
+            className: "wallet-connect-block",
+            children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+              onClick: _xinpay.initXdc3,
+              className: "wallect-connect-btn",
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+                className: "wallet-name",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h4", {
+                  children: "XinPay"
+                })
+              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+                className: "wallet-icon",
+                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+                  src: _xinpayLogo.default,
+                  alt: "Icon"
+                })
+              })]
+            })
           })
         })]
       });
@@ -183,8 +199,6 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       var BTN_MSG = this.props.btnName || "CONNECT";
       var BTN_CLASS = this.props.btnClass || "btn btn-rounded btn-info";
       var disabled = this.props.disabled || false;
@@ -195,28 +209,16 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
         parentClass += " darkTheme";
       }
 
-      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: parentClass,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBootstrap.Button, {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBootstrap.Button, {
           className: BTN_CLASS,
           onClick: function onClick() {
-            return _this3.setState({
-              showModal: true
-            });
+            return (0, _xinpay.initXdc3)();
           },
           disabled: disabled,
           children: BTN_MSG
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBootstrap.Modal, {
-          className: parentClass,
-          centered: true,
-          show: this.state.showModal,
-          onHide: function onHide() {
-            return _this3.setState({
-              showModal: false
-            });
-          },
-          children: this.RenderWalletProvider()
-        })]
+        })
       });
     }
   }]);
