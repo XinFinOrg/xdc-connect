@@ -1,8 +1,9 @@
 <!-- Custom-MDX-Documentation.mdx -->
 
-import { ArgsTable } from "@storybook/addon-docs";
-
+import { ArgsTable, Meta, Story, Canvas  } from "@storybook/addon-docs";
 import { XdcConnect } from "../../components";
+
+<Meta title="XdcConnect/Listeners" component={XdcConnect} />;
 
 # Xdc Connect - `Functionality`
 
@@ -37,7 +38,89 @@ Event is triggered when any of the loader changes the default **XDC** address. T
 2. **GetNativeBalance** - returns promise which will resolve into xdc balance.
 3. **SendTransaction** - returns promise which will resolve into xdc3 `receipt` for the transaction.
 4. **CallTransaction** - returns promise which will resolve into response for the transaction.
+5. **Disconnect** - disconnect the app with user's wallet provider.
 
 ## Arguments
 
+
+
 <ArgsTable of={XdcConnect} />
+
+## Examples
+
+### OnConnect
+
+Fired when user successfully connects their wallet. It passed an updated instance of user's wallet.
+
+```
+import React from "react";
+import { XdcConnect } from "xdc-connect";
+import "./App.css";
+function App() {
+  return (
+    <div className="App">
+      <XdcConnect
+        btnClass="btn btn-rounded btn-success"
+        btnName="Custom Text"
+        onConnect={(wallet) => {
+          console.log("user connected wallet", wallet);
+        }}
+      />
+    </div>
+  );
+}
+export default App 
+```
+
+### onDisconnect
+
+Fired when user successfully logouts/disconnects their wallet.
+
+### onAddressChange
+
+Fired when user changes their default address from providers like XinPay.
+
+## APIs
+
+The library also exposes APIs to interact with the wallet provider which are as follows:
+
+1. GetWallet - returns promise which will resolve into wallet object.
+2. GetNativeBalance - returns promise which will resolve into xdc balance.
+3. SendTransaction - returns promise which will resolve into xdc3 receipt for the transaction.
+4. CallTransaction - returns promise which will resolve into response for the transaction.
+5. Disconnect - disconnect the app with user's wallet provider.
+
+Example:
+```
+
+import React, { useState } from "react";
+import { XdcConnect, Disconnect } from "xdc-connect";
+import "./App.css";
+function App() {
+  const [wallet, setwallet] = useState({});
+console.log("wallet", wallet);
+return (
+    <div className="App">
+      <XdcConnect
+        btnClass={
+          wallet.connected
+            ? "btn btn-rounded btn-success"
+            : "btn btn-rounded btn-warning"
+        }
+        btnName={wallet.connected ? "CONNECTED" : "CONNECT"}
+        onConnect={(wallet) => {
+          console.log("user connected wallet", wallet);
+          setwallet(wallet);
+        }}
+        onDisconnect={(wallet) => {
+          console.log("user connected disconnect", wallet);
+          setwallet(wallet);
+        }}
+      />
+      {wallet.connected ? <button onClick={Disconnect}>Logout</button> : ""}
+    </div>
+  );
+}
+export default App;
+
+```

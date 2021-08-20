@@ -147,7 +147,7 @@ function _initXdc() {
               break;
             }
 
-            (0, _reactToastify.toast)("Please unlock XinPay wallet to continue", {
+            (0, _reactToastify.toast)("Please unlock", {
               autoClose: 2000
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));

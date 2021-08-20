@@ -55,7 +55,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
@@ -158,77 +158,8 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           className: "modal-body",
-          children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-            className: "wallet-connect-block",
-            children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-              onClick: _xinpay.initXdc3,
-              className: "wallect-connect-btn",
-              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-                className: "wallet-name",
-                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h4", {
-                  children: "XinPay"
-                })
-              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-                className: "wallet-icon",
-                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                  src: _xinpayLogo.default,
-                  alt: "Icon"
-                })
-              })]
-            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-              className: "wallect-connect-btn",
-              onClick: function onClick() {
-                return _this2.setState({
-                  providerSelected: Provider.privateKey
-                });
-              },
-              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-                className: "wallet-name",
-                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h4", {
-                  children: "Private Key"
-                })
-              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-                className: "wallet-icon",
-                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                  src: _privatekeyLogo.default,
-                  alt: "Icon"
-                })
-              })]
-            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-              className: "wallect-connect-btn",
-              onClick: function onClick() {
-                return _this2.setState({
-                  providerSelected: Provider.keystore
-                });
-              },
-              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-                className: "wallet-name",
-                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h4", {
-                  children: "Key Store"
-                })
-              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-                className: "wallet-icon",
-                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                  src: _keystoreLogo.default,
-                  alt: "Icon"
-                })
-              })]
-            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
-              className: "wallect-connect-btn",
-              onClick: _dcentInAppBrowser.initDcent,
-              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-                className: "wallet-name",
-                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h4", {
-                  children: "D'CENT"
-                })
-              }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-                className: "wallet-icon",
-                children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
-                  src: _dcentLogo.default,
-                  alt: "Icon"
-                })
-              })]
-            })]
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+            className: "wallet-connect-block"
           })
         })]
       });
