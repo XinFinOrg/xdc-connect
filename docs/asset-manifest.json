@@ -1,34 +1,34 @@
 {
   "files": {
-    "0.b0bc2cd3.iframe.bundle.js": "./0.b0bc2cd3.iframe.bundle.js",
-    "main.css": "./static/css/main.11975b5a.chunk.css",
-    "main.js": "./main.ac2b7076.iframe.bundle.js",
-    "main.css.map": "./static/css/main.11975b5a.chunk.css.map",
-    "runtime~main.js": "./runtime~main.7805007b.iframe.bundle.js",
+    "0.404795fd.iframe.bundle.js": "./0.404795fd.iframe.bundle.js",
+    "main.css": "./static/css/main.c701649d.chunk.css",
+    "main.js": "./main.9488a637.iframe.bundle.js",
+    "main.css.map": "./static/css/main.c701649d.chunk.css.map",
+    "runtime~main.js": "./runtime~main.77aeb8c6.iframe.bundle.js",
     "vendors~main.css": "./static/css/vendors~main.68b64559.chunk.css",
-    "vendors~main.js": "./vendors~main.3ec48c67.iframe.bundle.js",
+    "vendors~main.js": "./vendors~main.b8fc1069.iframe.bundle.js",
     "vendors~main.css.map": "./static/css/vendors~main.68b64559.chunk.css.map",
-    "vendors~main.js.map": "./vendors~main.3ec48c67.iframe.bundle.js.map",
-    "4.77ecb933.iframe.bundle.js": "./4.77ecb933.iframe.bundle.js",
-    "4.77ecb933.iframe.bundle.js.map": "./4.77ecb933.iframe.bundle.js.map",
-    "5.a9290bdf.iframe.bundle.js": "./5.a9290bdf.iframe.bundle.js",
-    "6.336a621a.iframe.bundle.js": "./6.336a621a.iframe.bundle.js",
-    "6.336a621a.iframe.bundle.js.map": "./6.336a621a.iframe.bundle.js.map",
+    "vendors~main.js.map": "./vendors~main.b8fc1069.iframe.bundle.js.map",
+    "4.580ee358.iframe.bundle.js": "./4.580ee358.iframe.bundle.js",
+    "4.580ee358.iframe.bundle.js.map": "./4.580ee358.iframe.bundle.js.map",
+    "5.1b153a5c.iframe.bundle.js": "./5.1b153a5c.iframe.bundle.js",
+    "6.ce6b3373.iframe.bundle.js": "./6.ce6b3373.iframe.bundle.js",
+    "6.ce6b3373.iframe.bundle.js.map": "./6.ce6b3373.iframe.bundle.js.map",
     "7.fb2f6ea5.iframe.bundle.js": "./7.fb2f6ea5.iframe.bundle.js",
-    "4.77ecb933.iframe.bundle.js.LICENSE.txt": "./4.77ecb933.iframe.bundle.js.LICENSE.txt",
-    "6.336a621a.iframe.bundle.js.LICENSE.txt": "./6.336a621a.iframe.bundle.js.LICENSE.txt",
+    "4.580ee358.iframe.bundle.js.LICENSE.txt": "./4.580ee358.iframe.bundle.js.LICENSE.txt",
+    "6.ce6b3373.iframe.bundle.js.LICENSE.txt": "./6.ce6b3373.iframe.bundle.js.LICENSE.txt",
     "iframe.html": "./iframe.html",
     "static/media/dcent-logo.7df30b03.png": "./static/media/dcent-logo.7df30b03.png",
     "static/media/keystore-logo.9f7aa6a2.png": "./static/media/keystore-logo.9f7aa6a2.png",
     "static/media/privatekey-logo.0b3bc829.png": "./static/media/privatekey-logo.0b3bc829.png",
     "static/media/xinpay-logo.89b1287c.png": "./static/media/xinpay-logo.89b1287c.png",
-    "vendors~main.3ec48c67.iframe.bundle.js.LICENSE.txt": "./vendors~main.3ec48c67.iframe.bundle.js.LICENSE.txt"
+    "vendors~main.b8fc1069.iframe.bundle.js.LICENSE.txt": "./vendors~main.b8fc1069.iframe.bundle.js.LICENSE.txt"
   },
   "entrypoints": [
-    "runtime~main.7805007b.iframe.bundle.js",
+    "runtime~main.77aeb8c6.iframe.bundle.js",
     "static/css/vendors~main.68b64559.chunk.css",
-    "vendors~main.3ec48c67.iframe.bundle.js",
-    "static/css/main.11975b5a.chunk.css",
-    "main.ac2b7076.iframe.bundle.js"
+    "vendors~main.b8fc1069.iframe.bundle.js",
+    "static/css/main.c701649d.chunk.css",
+    "main.9488a637.iframe.bundle.js"
   ]
 }

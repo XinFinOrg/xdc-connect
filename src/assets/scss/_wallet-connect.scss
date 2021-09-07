@@ -3,22 +3,23 @@
 }
 
 .modal-backdrop {
-  background-color: var(--text-color);
+  background-color: var(--modal-backdrop);
   opacity: 0.65 !important;
 }
 .modal-header {
   padding: 1.25rem;
+  border-bottom: 1px solid var(--modal-header);
 }
 .modal-header .close {
   font-size: 32px;
   padding: 0.5rem 0.5em !important;
-  color: var(--black);
+  color: var(--modal-header-close);
   font-weight: 400;
 }
 .modal-footer {
   color: var(--text-color);
   background-color: var(--background-color);
-  border-top: 1px solid var(--light-grey) !important;
+  border-top: 1px solid var(--modal-footer) !important;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
@@ -26,16 +27,20 @@
   padding: 1.25rem;
 }
 .modal-content {
+  color: var(--text-color);
+  background-color: var(--modal-content);
   border-radius: 12px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
 }
 .wallet-connect-block {
   display: grid;
   gap: 10px;
 }
 .wallect-connect-btn {
-  background-color: rgb(237, 238, 242);
+  color: var(--text-color);
+  background-color: var(--wallect-connect-btn);
   outline: none;
-  border: 1px solid rgb(206, 208, 217);
+  border: 1px solid var(--wallect-connect-btn__border);
   border-radius: 8px;
   display: flex;
   flex-direction: row;
@@ -51,7 +56,7 @@
     -webkit-box-shadow 0.15s ease-in-out;
 }
 .wallect-connect-btn:hover {
-  border-color: var(--grey);
+  border-color: var(--wallect-connect-btn--hover);
 }
 .wallet-name {
   display: flex;
@@ -99,7 +104,7 @@ button.back {
   appearance: none;
 }
 button.back:hover {
-  color: var(--text-color);
+  color: var(--button__back--hover);
   opacity: 1;
 }
 .back {

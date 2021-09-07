@@ -27,7 +27,6 @@ var NetworkValidation = function NetworkValidation(store) {
   return function (next) {
     return function (action) {
       next(action);
-      console.log("action.type", action.type);
 
       if ([types.WALLET_CONNECTED, types.WALLET_CHAIN_CHANGED, types.WALLET_ADDRESS_CHANGED].includes(action.type)) {
         var address = action.payload.address;

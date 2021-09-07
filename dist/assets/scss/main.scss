@@ -1,8 +1,18 @@
 @import "./variables";
+@import "./theme/light.scss";
+@import "./theme/dark.scss";
+
 
 .xdc-connect {
-  @import "./modal";
+  @extend .light;
+
+  &.darkTheme {
+    @extend .dark;
+  }
+
+  @import "./modal";  
   @import "./wallet-connect";
   @import "./notification";
   @import "./vendor/bootstrap.css";
 }
+

@@ -1,8 +1,9 @@
 <!-- Custom-MDX-Documentation.mdx -->
 
-import { ArgsTable } from "@storybook/addon-docs";
-
+import { ArgsTable, Meta, Story, Canvas } from "@storybook/addon-docs";
 import { XdcConnect } from "../../components";
+
+<Meta title="XdcConnect/Listeners" component={XdcConnect} />;
 
 # Xdc Connect - `Functionality`
 
@@ -10,34 +11,210 @@ This documentation enlists the various event listeners & interface APIs exported
 
 ## Listeners
 
-XDC-CONNECT allows user to listen for state changes by providing the listeners as `props`.  
+XDC-CONNECT allows user to listen for state changes by providing the listeners as `props`( [1](#wallet-connect-props) ).  
 Currently you can listen for the following updates in your component :
 
 1. On Wallet Connect - `onConnect`
 2. On Wallet Disconnect - `onDisconnect`
 3. On Address Change - `onAddressChange`
 
-Each listener will be called with a parameter of `wallet` which represents the state of the connected xdc wallet post the event trigger.
+Each listener will be called with a parameter of `wallet` ( [2](#wallet-object) ) which represents the state of the connected xdc wallet post the event trigger.
 
 ### On Connect
 
-Event is triggered when any of the loader successfully connects with application. The listener willl be called with an `wallet` object.
+Event is triggered when any of the loader successfully connects with application. The listener willl be called with an `wallet` ( [2](#wallet-object) ) object.
 
 ### On Disconnect
 
-Event is triggered when any of the loader successfully disconnects with application. The listener willl be called with an `wallet` object.
+Event is triggered when any of the loader successfully disconnects with application. The listener willl be called with an `wallet` ( [2](#wallet-object) ) object.
 
 ### On Address Change
 
-Event is triggered when any of the loader changes the default **XDC** address. The listener willl be called with an `wallet` object.
+Event is triggered when any of the loader changes the default **XDC** address. The listener willl be called with an `wallet` ( [2](#wallet-object) ) object.
 
 ## APIs
 
-1. **GetWallet** - returns promise which will resolve into `wallet` object.
+1. **GetWallet** - returns promise which will resolve into `wallet` ( [2](#wallet-object) ) object.
 2. **GetNativeBalance** - returns promise which will resolve into xdc balance.
-3. **SendTransaction** - returns promise which will resolve into xdc3 `receipt` for the transaction.
+3. **SendTransaction** - returns promise which will resolve into xdc3 `receipt` ( [3](#transaction-receipt-object) ) for the transaction.
 4. **CallTransaction** - returns promise which will resolve into response for the transaction.
+5. **Disconnect** - disconnect the app with user's wallet provider.
 
-## Arguments
+## Examples
 
-<ArgsTable of={XdcConnect} />
+### OnConnect
+
+Fired when user successfully connects their wallet. It passed an updated instance of user's wallet.
+
+```
+import React from "react";
+import { XdcConnect } from "xdc-connect";
+import "./App.css";
+function App() {
+  return (
+    <div className="App">
+      <XdcConnect
+        btnClass="btn btn-rounded btn-success"
+        btnName="Custom Text"
+        onConnect={(wallet) => {
+          console.log("user connected wallet", wallet);
+        }}
+      />
+    </div>
+  );
+}
+export default App
+```
+
+### onDisconnect
+
+Fired when user successfully logouts/disconnects their wallet.
+
+### onAddressChange
+
+Fired when user changes their default address from providers like XinPay.
+
+## APIs
+
+The library also exposes APIs to interact with the wallet provider which are as follows:
+
+1. **GetWallet**  
+   Returns `promise` which will resolve into `wallet` ( [2](#wallet-object) ) object.
+
+2. **GetNativeBalance**  
+   Returns `promise` which will resolve into xdc ( native crypto currency ) balance.
+
+3. **SendTransaction**  
+   This function can be used to make `PAYABLE` & `NONPAYBLE` state changing transactions.  This function needs to be invoded with a standard `web3 transaction object` ( [4](#transaction-object) ).  
+   Returns `promise` which will resolve into xdc3 `receipt` ( [3](#transaction-receipt-object) ) for the transaction.
+   The receipt is a standard `web3 receipt object`.
+
+4. **CallTransaction**  
+   This function needs to be invoded with a standard `web3 transaction object` ( [4](#transaction-object) ).  
+   Returns `promise` which will resolve into response for the transaction.  
+   The response will be `hex` encoded and can de decoded by providing the type of expected response by calling the following function:
+   ```
+     const decoded = xdc3.eth.abi.decodeParameter("string", encodedHex); // here "string" is the type of parameter
+   ```
+5. **Disconnect**  
+   Disconnect the app with user's wallet provider.
+
+### Example
+
+```
+
+import React, { useState } from "react";
+import { XdcConnect, Disconnect } from "xdc-connect";
+import "./App.css";
+function App() {
+  const [wallet, setwallet] = useState({});
+console.log("wallet", wallet);
+return (
+    <div className="App">
+      <XdcConnect
+        btnClass={
+          wallet.connected
+            ? "btn btn-rounded btn-success"
+            : "btn btn-rounded btn-warning"
+        }
+        btnName={wallet.connected ? "CONNECTED" : "CONNECT"}
+        onConnect={(wallet) => {
+          console.log("user connected wallet", wallet);
+          setwallet(wallet);
+        }}
+        onDisconnect={(wallet) => {
+          console.log("user connected disconnect", wallet);
+          setwallet(wallet);props
+        }}
+      />
+      {wallet.connected ? <button onClick={Disconnect}>Logout</button> : ""}
+    </div>
+  );
+}
+export default App;
+
+```
+
+## Interfaces
+
+List of interfaces of objects used in props & function arguments.
+
+### Wallet Connect props
+
+```
+
+    export type themes = "light" | "dark"
+
+    export type validChainId = 50 | 51 | 551
+
+    export type ValidProvider = "xinpay" | "keystore" | "privatekey" | "dcent-inapp"
+
+    export interface WalletConnectProps {
+      onDisconnect?: (wallet: Wallet) => any
+      onConnect?: (wallet: Wallet) => any
+      onAddressChange?: (wallet: Wallet) => any
+      btnClass?: string
+      btnName?: string
+      theme?: themes
+      disabled?: boolean
+      deafaultChainId?: validChainId
+      enabledProviders?: ValidProvider[]
+    }
+
+```
+
+### Wallet Object
+
+```
+  interface Wallet {
+    connected: Boolean;
+    address: string;
+    chain_id: number;
+    valid_network: Boolean;
+    explorer: string;
+    rpc_provider: string;
+    ws_provider: string;
+    loader: string;
+    account: null;
+  }
+```
+
+### Transaction Object
+
+```
+     interface Transaction {
+       hash: string;
+       nonce: number;
+       blockHash: string | null;
+       blockNumber: number | null;
+       transactionIndex: number | null;
+       from: string;
+       to: string | null;
+       value: string;
+       gasPrice: string;
+       gas: number;
+       input: string;
+     }
+```
+
+### Transaction Receipt Object
+
+```
+  interface TransactionReceipt {
+      status: boolean;
+      transactionHash: string;
+      transactionIndex: number;
+      blockHash: string;
+      blockNumber: number;
+      from: string;
+      to: string;
+      contractAddress?: string;
+      cumulativeGasUsed: number;
+      gasUsed: number;
+      logs: Log[];
+      logsBloom: string;
+      events?: {
+          [eventName: string]: EventLog;
+      };
+  }
+```

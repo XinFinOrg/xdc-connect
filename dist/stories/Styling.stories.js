@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CustomizeButton = exports.Default = exports.default = void 0;
+exports.CustomModalTheme = exports.CustomizeButton = exports.Default = exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -36,5 +36,12 @@ var CustomizeButton = Template.bind({});
 exports.CustomizeButton = CustomizeButton;
 CustomizeButton.args = {
   btnName: "Click To Connect",
+  btnClass: "btn btn-warning",
+  disabled: false
+};
+var CustomModalTheme = Template.bind({});
+exports.CustomModalTheme = CustomModalTheme;
+CustomModalTheme.args = {
+  theme: "dark",
   btnClass: "btn btn-warning"
 };

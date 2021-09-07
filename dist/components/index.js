@@ -57,12 +57,16 @@ XdcConnect.propTypes = {
   onAddressChange: _propTypes.default.func,
   btnName: _propTypes.default.string,
   btnClass: _propTypes.default.string,
-  disabled: _propTypes.default.bool
+  disabled: _propTypes.default.bool,
+  theme: _propTypes.default.oneOf(["light", "dark"]),
+  defaultChainId: _propTypes.default.oneOf([50, 51, 551]),
+  enabledProviders: _propTypes.default.arrayOf(_propTypes.default.string)
 };
 XdcConnect.defaultProps = {
   btnName: "CONNECT",
   btnClass: "btn btn-rounded btn-info",
-  disabled: false
+  disabled: false,
+  theme: "light"
 };
 
 var GetWallet = function GetWallet() {

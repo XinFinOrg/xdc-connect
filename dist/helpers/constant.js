@@ -12,23 +12,27 @@ var LOADERS = {
   DcentInApp: "dcent-inapp"
 };
 exports.LOADERS = LOADERS;
-var VALID_CHAINS = [50, 51];
+var VALID_CHAINS = [50, 51, 551];
 exports.VALID_CHAINS = VALID_CHAINS;
 var NETWORK_NAME = {
   50: "XinFin",
-  51: "Apothem"
+  51: "Apothem",
+  551: "XDC Devnet"
 };
 exports.NETWORK_NAME = NETWORK_NAME;
 var CHAIN_DATA = {
   "0x32": "https://explorer.xinfin.network",
   "0x33": "https://explorer.apothem.network",
+  "0x227": "https://devnetscan.apothem.network",
   50: "https://explorer.xinfin.network",
-  51: "https://explorer.apothem.network"
+  51: "https://explorer.apothem.network",
+  551: "https://devnetscan.apothem.network"
 };
 exports.CHAIN_DATA = CHAIN_DATA;
 var HTTP_PROVIDER = {
   50: "https://rpc.xinfin.network",
-  51: "https://rpc.apothem.network"
+  51: "https://rpc.apothem.network",
+  551: "https://devnetrpc.apothem.network"
 };
 exports.HTTP_PROVIDER = HTTP_PROVIDER;
 var DEFAULT_CHAIN_ID = 50;

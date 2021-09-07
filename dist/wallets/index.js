@@ -74,15 +74,15 @@ function GetNativeBalance(address) {
 
 var SendTransaction = function SendTransaction(tx) {
   return new Promise(function (resolve, reject) {
-    var loader = _store.default.getState().wallet.loader;
+    var wallet = _store.default.getState().wallet;
 
     var toastId;
-    return GetFuncFromLoader(loader).SendTransaction(tx).then(function (resp) {
+    return GetFuncFromLoader(wallet.loader).SendTransaction(tx).then(function (resp) {
       if (resp.transactionHash) {
         var transactionHash = resp.transactionHash;
         (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
           children: ["Sucsess\xA0", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
-            href: (0, _crypto.BUILD_TX_LINK)(_constant.EXPLORER, transactionHash),
+            href: (0, _crypto.BUILD_TX_LINK)(wallet.explorer, transactionHash),
             rel: "noreferrer",
             target: "_blank",
             children: "HASH"

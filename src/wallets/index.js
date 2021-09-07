@@ -6,7 +6,7 @@ import * as account from "./account";
 import * as dcentInApp from "./dcentInAppBrowser";
 
 import store from "../redux/store";
-import { EXPLORER, LOADERS, DEFAULT_PROVIDER } from "../helpers/constant";
+import { LOADERS, DEFAULT_PROVIDER } from "../helpers/constant";
 import { BUILD_TX_LINK, IsJsonRpcError } from "../helpers/crypto";
 
 function GetFuncFromLoader(loader) {
@@ -44,9 +44,9 @@ export function GetNativeBalance(address) {
 
 export const SendTransaction = (tx) => {
   return new Promise((resolve, reject) => {
-    const loader = store.getState().wallet.loader;
+    const wallet = store.getState().wallet;
     let toastId;
-    return GetFuncFromLoader(loader)
+    return GetFuncFromLoader(wallet.loader)
       .SendTransaction(tx)
       .then((resp) => {
         if (resp.transactionHash) {
@@ -55,7 +55,7 @@ export const SendTransaction = (tx) => {
             <div>
               Sucsess&nbsp;
               <a
-                href={BUILD_TX_LINK(EXPLORER, transactionHash)}
+                href={BUILD_TX_LINK(wallet.explorer, transactionHash)}
                 rel="noreferrer"
                 target="_blank"
               >

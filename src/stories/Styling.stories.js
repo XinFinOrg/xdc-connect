@@ -16,4 +16,11 @@ export const CustomizeButton = Template.bind({});
 CustomizeButton.args = {
   btnName: "Click To Connect",
   btnClass: "btn btn-warning",
+  disabled:false
+};
+
+export const CustomModalTheme = Template.bind({});
+CustomModalTheme.args = {
+  theme: "dark",
+  btnClass: "btn btn-warning",
 };

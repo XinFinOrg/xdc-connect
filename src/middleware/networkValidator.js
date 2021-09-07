@@ -8,8 +8,6 @@ import { IsHex } from "../helpers/math";
 export const NetworkValidation = (store) => (next) => (action) => {
   next(action);
 
-  console.log("action.type", action.type);
-
   if (
     [
       types.WALLET_CONNECTED,

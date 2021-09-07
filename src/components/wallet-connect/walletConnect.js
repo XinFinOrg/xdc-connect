@@ -13,7 +13,12 @@ import PrivateKeyLogo from "../../assets/img/wallets/privatekey-logo.png";
 import KeystoreLogo from "../../assets/img/wallets/keystore-logo.png";
 import DcentLogo from "../../assets/img/wallets/dcent-logo.png";
 
-import { DEFAULT_CHAIN_ID, CHAIN_DATA } from "../../helpers/constant";
+import {
+  DEFAULT_CHAIN_ID,
+  CHAIN_DATA,
+  VALID_CHAINS,
+  LOADERS,
+} from "../../helpers/constant";
 import * as actions from "../../actions";
 
 const Provider = {
@@ -30,6 +35,14 @@ class WalletConnect extends React.Component {
       showModal: false,
       providerSelected: Provider.menu,
     };
+
+    this.defaultChainId =
+      (this.props.defaultChainId &&
+        VALID_CHAINS.includes(this.props.defaultChainId)) ||
+      DEFAULT_CHAIN_ID;
+
+    this.enabledProviders =
+      this.props.enabledProviders || Object.keys(LOADERS).map((x) => LOADERS[x]);
   }
 
   componentDidUpdate(prevProps) {
@@ -63,10 +76,10 @@ class WalletConnect extends React.Component {
     else {
       this.props.WalletConnected({
         account,
-        chain_id: DEFAULT_CHAIN_ID,
+        chain_id: this.defaultChainId,
         address: account.address,
         loader,
-        explorer: CHAIN_DATA[DEFAULT_CHAIN_ID],
+        explorer: CHAIN_DATA[this.defaultChainId],
       });
       this.setState({ showModal: false, providerSelected: Provider.menu });
     }
@@ -90,48 +103,67 @@ class WalletConnect extends React.Component {
           </div>
           <div className="modal-body">
             <div className="wallet-connect-block">
-              <button onClick={initXdc3} className="wallect-connect-btn">
-                <div className="wallet-name">
-                  <h4>XinPay</h4>
-                </div>
-                <div className="wallet-icon">
-                  <img src={XinpayLogo} alt="Icon" />
-                </div>
-              </button>
-              <button
-                className="wallect-connect-btn"
-                onClick={() =>
-                  this.setState({ providerSelected: Provider.privateKey })
-                }
-              >
-                <div className="wallet-name">
-                  <h4>Private Key</h4>
-                </div>
-                <div className="wallet-icon">
-                  <img src={PrivateKeyLogo} alt="Icon" />
-                </div>
-              </button>
-              <button
-                className="wallect-connect-btn"
-                onClick={() =>
-                  this.setState({ providerSelected: Provider.keystore })
-                }
-              >
-                <div className="wallet-name">
-                  <h4>Key Store</h4>
-                </div>
-                <div className="wallet-icon">
-                  <img src={KeystoreLogo} alt="Icon" />
-                </div>
-              </button>
-              <button className="wallect-connect-btn" onClick={initDcent}>
-                <div className="wallet-name">
-                  <h4>D'CENT</h4>
-                </div>
-                <div className="wallet-icon">
-                  <img src={DcentLogo} alt="Icon" />
-                </div>
-              </button>
+              {this.enabledProviders.includes(LOADERS.Xinpay) ? (
+                <button onClick={initXdc3} className="wallect-connect-btn">
+                  <div className="wallet-name">
+                    <h4>XinPay</h4>
+                  </div>
+                  <div className="wallet-icon">
+                    <img src={XinpayLogo} alt="Icon" />
+                  </div>
+                </button>
+              ) : (
+                ""
+              )}
+
+              {this.enabledProviders.includes(LOADERS.Privatekey) ? (
+                <button
+                  className="wallect-connect-btn"
+                  onClick={() =>
+                    this.setState({ providerSelected: Provider.privateKey })
+                  }
+                >
+                  <div className="wallet-name">
+                    <h4>Private Key</h4>
+                  </div>
+                  <div className="wallet-icon">
+                    <img src={PrivateKeyLogo} alt="Icon" />
+                  </div>
+                </button>
+              ) : (
+                ""
+              )}
+
+              {this.enabledProviders.includes(LOADERS.Keystore) ? (
+                <button
+                  className="wallect-connect-btn"
+                  onClick={() =>
+                    this.setState({ providerSelected: Provider.keystore })
+                  }
+                >
+                  <div className="wallet-name">
+                    <h4>Key Store</h4>
+                  </div>
+                  <div className="wallet-icon">
+                    <img src={KeystoreLogo} alt="Icon" />
+                  </div>
+                </button>
+              ) : (
+                ""
+              )}
+
+              {this.enabledProviders.includes(LOADERS.DcentInApp) ? (
+                <button className="wallect-connect-btn" onClick={initDcent}>
+                  <div className="wallet-name">
+                    <h4>D'CENT</h4>
+                  </div>
+                  <div className="wallet-icon">
+                    <img src={DcentLogo} alt="Icon" />
+                  </div>
+                </button>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
@@ -159,9 +191,8 @@ class WalletConnect extends React.Component {
     const BTN_CLASS = this.props.btnClass || "btn btn-rounded btn-info";
     const disabled = this.props.disabled || false;
     let parentClass = "xdc-connect";
-    parentClass += " darkTheme";
 
-    if (this.props.darkTheme) {
+    if (this.props.theme === "dark") {
       parentClass += " darkTheme";
     }
 

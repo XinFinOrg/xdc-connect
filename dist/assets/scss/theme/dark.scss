@@ -1,0 +1,21 @@
+.dark {
+  --background-color: #171622;
+  --text-color: white;
+  --headerbg: #212130;
+  --frontbg: #212130;
+  --frontbg-hover: #383854;
+  --modalbg: #212130;
+  --link-color: #828fff;
+  --border-color: #2e2e42;
+
+
+  --modal-content: var(--frontbg);
+  --modal-backdrop: var(--black);
+  --modal-header: var(--purple-grey);
+  --modal-header-close: var(--white);
+  --modal-footer:  var(--border-color);
+  --wallect-connect-btn: var(--border-color);
+  --wallect-connect-btn__border: var(--border-color);
+  --wallect-connect-btn--hover:  var(--purple-grey);
+  --button__back--hover: var(--text-color);
+}

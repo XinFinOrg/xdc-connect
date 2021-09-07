@@ -91,10 +91,10 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
         });else {
           _this.props.WalletConnected({
             account: account,
-            chain_id: _constant.DEFAULT_CHAIN_ID,
+            chain_id: _this.defaultChainId,
             address: account.address,
             loader: loader,
-            explorer: _constant.CHAIN_DATA[_constant.DEFAULT_CHAIN_ID]
+            explorer: _constant.CHAIN_DATA[_this.defaultChainId]
           });
 
           _this.setState({
@@ -109,6 +109,10 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
       showModal: false,
       providerSelected: Provider.menu
     };
+    _this.defaultChainId = _this.props.defaultChainId && _constant.VALID_CHAINS.includes(_this.props.defaultChainId) || _constant.DEFAULT_CHAIN_ID;
+    _this.enabledProviders = _this.props.enabledProviders || Object.keys(_constant.LOADERS).map(function (x) {
+      return _constant.LOADERS[x];
+    });
     return _this;
   }
 
@@ -160,7 +164,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
           className: "modal-body",
           children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
             className: "wallet-connect-block",
-            children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+            children: [this.enabledProviders.includes(_constant.LOADERS.Xinpay) ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
               onClick: _xinpay.initXdc3,
               className: "wallect-connect-btn",
               children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -175,7 +179,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
                   alt: "Icon"
                 })
               })]
-            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+            }) : "", this.enabledProviders.includes(_constant.LOADERS.Privatekey) ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
               className: "wallect-connect-btn",
               onClick: function onClick() {
                 return _this2.setState({
@@ -194,7 +198,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
                   alt: "Icon"
                 })
               })]
-            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+            }) : "", this.enabledProviders.includes(_constant.LOADERS.Keystore) ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
               className: "wallect-connect-btn",
               onClick: function onClick() {
                 return _this2.setState({
@@ -213,7 +217,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
                   alt: "Icon"
                 })
               })]
-            }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+            }) : "", this.enabledProviders.includes(_constant.LOADERS.DcentInApp) ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
               className: "wallect-connect-btn",
               onClick: _dcentInAppBrowser.initDcent,
               children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -228,7 +232,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
                   alt: "Icon"
                 })
               })]
-            })]
+            }) : ""]
           })
         })]
       });
@@ -258,9 +262,8 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
       var BTN_CLASS = this.props.btnClass || "btn btn-rounded btn-info";
       var disabled = this.props.disabled || false;
       var parentClass = "xdc-connect";
-      parentClass += " darkTheme";
 
-      if (this.props.darkTheme) {
+      if (this.props.theme === "dark") {
         parentClass += " darkTheme";
       }
 

@@ -1,0 +1,14 @@
+.light {
+  --background-color: #f7f7f7;
+  --text-color: black;
+
+  --modal-content: var(--white);
+  --modal-backdrop: var(--text-color);
+  --modal-header: white;
+  --modal-header-close: var(--black);
+  --modal-footer:  var(--light-grey);
+  --wallect-connect-btn: rgb(237, 238, 242);
+  --wallect-connect-btn__border: rgb(206, 208, 217);
+  --wallect-connect-btn--hover: var(--grey);
+  --button__back--hover: var(--text-color);
+}

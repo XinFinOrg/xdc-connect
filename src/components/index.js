@@ -28,12 +28,16 @@ XdcConnect.propTypes = {
   btnName: PropTypes.string,
   btnClass: PropTypes.string,
   disabled: PropTypes.bool,
+  theme: PropTypes.oneOf(["light", "dark"]),
+  defaultChainId: PropTypes.oneOf([50, 51, 551]),
+  enabledProviders: PropTypes.arrayOf(PropTypes.string)
 };
 
 XdcConnect.defaultProps = {
   btnName: "CONNECT",
   btnClass: "btn btn-rounded btn-info",
   disabled: false,
+  theme: "light",
 };
 
 export const GetWallet = () => {
@@ -54,4 +58,4 @@ export const Disconnect = () => {
 
 export const GetNativeBalance = () => {
   return Wallet.GetNativeBalance();
-}
+};

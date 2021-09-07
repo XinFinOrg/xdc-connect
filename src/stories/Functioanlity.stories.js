@@ -14,8 +14,8 @@ export default {
     docs: {
       page: docsPage,
       source: {
-        type: 'code',
-      }
+        type: "code",
+      },
     },
   },
 };
@@ -123,3 +123,19 @@ const Template2 = () => {
 };
 
 export const UsingAPI = Template2.bind({});
+
+const Template3 = (props) => {
+  const [wallet, setwallet] = useState({});
+
+  return (
+    <div className="App">
+      <XdcConnect {...props} />
+      {wallet.connected ? <button onClick={Disconnect}>Logout</button> : ""}
+    </div>
+  );
+};
+
+export const SelectiveProviders = Template3.bind({});
+SelectiveProviders.args = {
+  enabledProviders: ["xinpay", "dcent-inapp", "privatekey", "keystore"],
+};
