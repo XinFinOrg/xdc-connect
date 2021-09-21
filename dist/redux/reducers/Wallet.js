@@ -9,6 +9,8 @@ exports.default = void 0;
 
 var types = _interopRequireWildcard(require("../../actions/types"));
 
+var _constant = require("../../helpers/constant");
+
 var _excluded = ["address", "chain_id", "loader"];
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -24,6 +26,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
 
 var initialState = {
   connected: false,
@@ -50,11 +54,19 @@ var WalletReducer = function WalletReducer() {
             loader = _payload$payload.loader,
             rst = _objectWithoutProperties(_payload$payload, _excluded);
 
+        var valid_network = false;
+        if (String(chain_id).startsWith("0x") && IsHex(chain_id)) parseInt(chain_id, 16), _readOnlyError("chain_id");
+
+        if (_constant.VALID_CHAINS.includes(chain_id)) {
+          valid_network = true;
+        }
+
         return _objectSpread(_objectSpread({}, state), {}, {
           connected: true,
           address: address,
           chain_id: chain_id,
-          loader: loader
+          loader: loader,
+          valid_network: valid_network
         }, rst);
       }
 

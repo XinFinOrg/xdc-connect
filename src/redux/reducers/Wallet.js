@@ -1,4 +1,5 @@
 import * as types from "../../actions/types";
+import { VALID_CHAINS } from "../../helpers/constant";
 
 const initialState = {
   connected: false,
@@ -16,12 +17,21 @@ const WalletReducer = (state = initialState, payload) => {
   switch (payload.type) {
     case types.WALLET_CONNECTED: {
       const { address, chain_id, loader, ...rst } = payload.payload;
+      let valid_network = false;
+      if (String(chain_id).startsWith("0x") && IsHex(chain_id))
+        chain_id = parseInt(chain_id, 16);
+
+      if (VALID_CHAINS.includes(chain_id)) {
+        valid_network = true;
+      }
+      
       return {
         ...state,
         connected: true,
         address: address,
         chain_id: chain_id,
         loader,
+        valid_network,
         ...rst,
       };
     }

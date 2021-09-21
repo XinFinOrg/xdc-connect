@@ -33,7 +33,6 @@ var WalletConnected = function WalletConnected(_ref) {
       loader = _ref.loader,
       rst = _objectWithoutProperties(_ref, _excluded);
 
-  console.log("connected action");
   return {
     type: Types.WALLET_CONNECTED,
     payload: _objectSpread({

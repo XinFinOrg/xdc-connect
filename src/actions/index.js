@@ -3,7 +3,6 @@ import { CHAIN_DATA } from "../helpers/constant";
 import * as Types from "./types";
 
 export const WalletConnected = ({ address, chain_id, loader, ...rst }) => {
-  console.log("connected action");
   return {
     type: Types.WALLET_CONNECTED,
     payload: { address, chain_id, loader, ...rst },
