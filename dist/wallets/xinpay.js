@@ -412,7 +412,7 @@ function _GetCurrentProvider() {
           case 5:
             chainId = _context8.sent;
 
-            if (![50, 51].includes(chainId)) {
+            if (![50, 51, 551].includes(chainId)) {
               _context8.next = 8;
               break;
             }

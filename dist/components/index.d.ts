@@ -7,10 +7,10 @@ export interface Account {
 }
 
 export interface Wallet {
-  connected: Boolean;
+  connected: boolean;
   address: string;
   chain_id: number;
-  valid_network: Boolean;
+  valid_network: boolean;
   explorer: string;
   rpc_provider: string;
   ws_provider: string;
