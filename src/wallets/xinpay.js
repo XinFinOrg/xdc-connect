@@ -140,7 +140,7 @@ export async function GetCurrentProvider() {
 
   if (window.web3.currentProvider.isMetaMask) {
     const chainId = await GetChainId();
-    if ([50, 51].includes(chainId)) return "xinpay";
+    if ([50, 51, 551].includes(chainId)) return "xinpay";
     return "metamask";
   }
 
