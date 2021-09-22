@@ -42,7 +42,8 @@ class WalletConnect extends React.Component {
       DEFAULT_CHAIN_ID;
 
     this.enabledProviders =
-      this.props.enabledProviders || Object.keys(LOADERS).map((x) => LOADERS[x]);
+      this.props.enabledProviders ||
+      Object.keys(LOADERS).map((x) => LOADERS[x]);
   }
 
   componentDidUpdate(prevProps) {
@@ -55,8 +56,8 @@ class WalletConnect extends React.Component {
     }
 
     if (
-      prevProps.wallet.connected !== this.props.wallet.connected &&
-      this.props.wallet.connected !== prevProps.wallet.connected
+      prevProps.wallet.connected === true &&
+      this.props.wallet.connected === false
     ) {
       this.props.onDisconnect && this.props.onDisconnect(this.props.wallet);
     }
