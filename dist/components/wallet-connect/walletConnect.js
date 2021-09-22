@@ -126,7 +126,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
         this.props.onConnect && this.props.onConnect(this.props.wallet);
       }
 
-      if (prevProps.wallet.connected !== this.props.wallet.connected && this.props.wallet.connected !== prevProps.wallet.connected) {
+      if (prevProps.wallet.connected === true && this.props.wallet.connected === false) {
         this.props.onDisconnect && this.props.onDisconnect(this.props.wallet);
       }
 
