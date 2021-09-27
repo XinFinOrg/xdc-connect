@@ -1,5 +1,5 @@
 import React from "react"
-import { Transaction as Transaction_, TransactionReceipt } from "xdc3-core"
+import { TransactionConfig, TransactionReceipt } from "xdc3-core"
 
 export interface Account {
   address: string;
@@ -58,13 +58,13 @@ export function GetWallet(): Wallet;
  * @returns transaction receipt
  * 
  */
-export function SendTransaction(tx: Transaction): Promise<TransactionReceipt>;
+export function SendTransaction(tx: TransactionConfig): Promise<TransactionReceipt>;
 
 /**
  * @param tx - standard xdc3 / web3 transaction object
  * @returns HEX encoded response
  */
-export function CallTransaction(tx: Transaction): Promise<string>;
+export function CallTransaction(tx: TransactionConfig): Promise<string>;
 
 /**
  * 
