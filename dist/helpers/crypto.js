@@ -152,7 +152,7 @@ var BUILD_BLOCK_LINK = function BUILD_BLOCK_LINK(explorer, hash) {
 exports.BUILD_BLOCK_LINK = BUILD_BLOCK_LINK;
 
 var IsJsonRpcError = function IsJsonRpcError(err) {
-  return err.message.split("\n")[0] === "Internal JSON-RPC error.";
+  return err.message && err.message.split("\n")[0] === "Internal JSON-RPC error.";
 };
 
 exports.IsJsonRpcError = IsJsonRpcError;
