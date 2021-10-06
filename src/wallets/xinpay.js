@@ -206,7 +206,18 @@ export async function SendTransaction(tx) {
                   resolve(receipt);
                 } else {
                   clearInterval(interval);
-                  reject(receipt);
+                  // reject(receipt);
+                  xdc3.eth.getTransaction(receipt.transactionHash).then((tx) => {
+                    tx = { ...tx };
+                    xdc3.eth
+                      .call(tx)
+                      .then((x) => {
+                        const other = x.replace("0x", "").slice(8);
+                        const buf = Buffer.from(other, "hex");
+                        reject({ message: buf.toString() });
+                      })
+                      .catch(() => reject({ message: "Transaction Failed" }));
+                  });
                 }
               }
             } catch (e) {

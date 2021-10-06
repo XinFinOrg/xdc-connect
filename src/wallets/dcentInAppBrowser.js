@@ -109,7 +109,18 @@ export async function SendTransaction(tx) {
         if (receipt.status) {
           resolve(receipt);
         } else {
-          reject(receipt);
+          // reject(receipt);
+          xdc3.eth.getTransaction(receipt.transactionHash).then((tx) => {
+            tx = { ...tx };
+            xdc3.eth
+              .call(tx)
+              .then((x) => {
+                const other = x.replace("0x", "").slice(8);
+                const buf = Buffer.from(other, "hex");
+                reject({ message: buf.toString() });
+              })
+              .catch(() => reject({ message: "Transaction Failed" }));
+          });
         }
       }
     });
