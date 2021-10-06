@@ -109,5 +109,5 @@ export const BUILD_BLOCK_LINK = (explorer, hash) => {
 };
 
 export const IsJsonRpcError = (err) => {
-  return err.message.split("\n")[0] === "Internal JSON-RPC error.";
+  return err.message && err.message.split("\n")[0] === "Internal JSON-RPC error.";
 };
