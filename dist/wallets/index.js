@@ -76,7 +76,17 @@ var SendTransaction = function SendTransaction(tx) {
   return new Promise(function (resolve, reject) {
     var wallet = _store.default.getState().wallet;
 
-    var toastId;
+    var toastId = (0, _reactToastify.toast)("Processing TX ...", {
+      position: "bottom-right",
+      type: "processing-tx",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      closeButton: false
+    });
     return GetFuncFromLoader(wallet.loader).SendTransaction(tx).then(function (resp) {
       if (resp.transactionHash) {
         var transactionHash = resp.transactionHash;

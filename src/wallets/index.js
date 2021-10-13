@@ -45,7 +45,17 @@ export function GetNativeBalance(address) {
 export const SendTransaction = (tx) => {
   return new Promise((resolve, reject) => {
     const wallet = store.getState().wallet;
-    let toastId;
+    let toastId = toast("Processing TX ...", {
+      position: "bottom-right",
+      type: "processing-tx",
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      closeButton: false,
+    });
     return GetFuncFromLoader(wallet.loader)
       .SendTransaction(tx)
       .then((resp) => {
