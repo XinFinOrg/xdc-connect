@@ -56,6 +56,15 @@ class WalletConnect extends React.Component {
     }
 
     if (
+      prevProps.wallet.connected === this.props.wallet.connected &&
+      this.props.wallet.connected &&
+      prevProps.wallet.chain_id !== this.props.wallet.chain_id
+    ) {
+      this.props.onNetworkChange &&
+        this.props.onNetworkChange(this.props.wallet);
+    }
+
+    if (
       prevProps.wallet.connected === true &&
       this.props.wallet.connected === false
     ) {
@@ -207,6 +216,7 @@ class WalletConnect extends React.Component {
           {BTN_MSG}
         </Button>
         <Modal
+          backdrop={this.props.modalBackdrop}
           className={parentClass}
           centered={true}
           show={this.state.showModal}

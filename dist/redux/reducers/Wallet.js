@@ -11,6 +11,8 @@ var types = _interopRequireWildcard(require("../../actions/types"));
 
 var _constant = require("../../helpers/constant");
 
+var _math = require("../../helpers/math");
+
 var _excluded = ["address", "chain_id", "loader"];
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -55,7 +57,7 @@ var WalletReducer = function WalletReducer() {
             rst = _objectWithoutProperties(_payload$payload, _excluded);
 
         var valid_network = false;
-        if (String(chain_id).startsWith("0x") && IsHex(chain_id)) parseInt(chain_id, 16), _readOnlyError("chain_id");
+        if (String(chain_id).startsWith("0x") && (0, _math.IsHex)(chain_id)) parseInt(chain_id, 16), _readOnlyError("chain_id");
 
         if (_constant.VALID_CHAINS.includes(chain_id)) {
           valid_network = true;

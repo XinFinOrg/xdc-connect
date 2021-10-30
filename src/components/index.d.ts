@@ -29,6 +29,8 @@ export interface WalletConnectProps {
   onDisconnect?: (wallet: Wallet) => any
   onConnect?: (wallet: Wallet) => any
   onAddressChange?: (wallet: Wallet) => any
+  onNetworkChange?: (wallet: Wallet) => any
+  modalBackdrop?:boolean
   btnClass?: string
   btnName?: string
   theme?: themes

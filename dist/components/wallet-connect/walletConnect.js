@@ -126,6 +126,10 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
         this.props.onConnect && this.props.onConnect(this.props.wallet);
       }
 
+      if (prevProps.wallet.connected === this.props.wallet.connected && this.props.wallet.connected && prevProps.wallet.chain_id !== this.props.wallet.chain_id) {
+        this.props.onNetworkChange && this.props.onNetworkChange(this.props.wallet);
+      }
+
       if (prevProps.wallet.connected === true && this.props.wallet.connected === false) {
         this.props.onDisconnect && this.props.onDisconnect(this.props.wallet);
       }
@@ -279,6 +283,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
           disabled: disabled,
           children: BTN_MSG
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBootstrap.Modal, {
+          backdrop: this.props.modalBackdrop,
           className: parentClass,
           centered: true,
           show: this.state.showModal,

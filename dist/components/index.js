@@ -55,6 +55,7 @@ XdcConnect.propTypes = {
   onConnect: _propTypes.default.func,
   onDisconnect: _propTypes.default.func,
   onAddressChange: _propTypes.default.func,
+  onNetworkChange: _propTypes.default.func,
   btnName: _propTypes.default.string,
   btnClass: _propTypes.default.string,
   disabled: _propTypes.default.bool,

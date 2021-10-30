@@ -1,5 +1,6 @@
 import * as types from "../../actions/types";
 import { VALID_CHAINS } from "../../helpers/constant";
+import { IsHex } from "../../helpers/math";
 
 const initialState = {
   connected: false,

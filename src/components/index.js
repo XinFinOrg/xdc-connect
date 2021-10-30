@@ -25,6 +25,7 @@ XdcConnect.propTypes = {
   onConnect: PropTypes.func,
   onDisconnect: PropTypes.func,
   onAddressChange: PropTypes.func,
+  onNetworkChange: PropTypes.func,
   btnName: PropTypes.string,
   btnClass: PropTypes.string,
   disabled: PropTypes.bool,
