@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.FormatSecondsTwo = exports.FormatSeconds = exports.GetTimerData = exports.TIMER_FORMAT = exports.DateStringFormat = void 0;
+exports.TIMER_FORMAT = exports.GetTimerData = exports.FormatSecondsTwo = exports.FormatSeconds = exports.DateStringFormat = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 

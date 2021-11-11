@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.IsJson = exports.FilterStructResp = exports.ObjToArr = void 0;
+exports.ObjToArr = exports.IsJson = exports.FilterStructResp = void 0;
 
 var ObjToArr = function ObjToArr(obj) {
   return Object.keys(obj).map(function (key) {

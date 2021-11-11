@@ -5,11 +5,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.GetProvider = GetProvider;
-exports._initListerner = _initListerner;
-exports.SendTransaction = SendTransaction;
 exports.CallTransaction = CallTransaction;
-exports.initDcent = exports.GetChainId = exports.DcentSupported = void 0;
+exports.GetChainId = exports.DcentSupported = void 0;
+exports.GetProvider = GetProvider;
+exports.SendTransaction = SendTransaction;
+exports._initListerner = _initListerner;
+exports.initDcent = void 0;
 
 var _xdc = _interopRequireDefault(require("xdc3"));
 

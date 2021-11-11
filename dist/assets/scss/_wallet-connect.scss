@@ -36,6 +36,19 @@
   display: grid;
   gap: 10px;
 }
+.wallet-connect-block.grid { 
+  display: grid; 
+  grid-gap: 10px; 
+  grid-template-columns: auto auto; 
+  gap: 10px; 
+  .wallect-connect-btn{ 
+    height: 100px; 
+    outline: none; 
+    box-shadow: none; 
+    display: flex; 
+    flex-direction: column-reverse; 
+  } 
+} 
 .wallect-connect-btn {
   color: var(--text-color);
   background-color: var(--wallect-connect-btn);

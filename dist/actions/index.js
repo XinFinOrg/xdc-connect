@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.NetworkInValid = exports.SetChainData = exports.NetworkValid = exports.WalletDisconnected = exports.AccountChanged = exports.NetworkChanged = exports.WalletOpened = exports.WalletConnected = void 0;
+exports.WalletOpened = exports.WalletDisconnected = exports.WalletConnected = exports.SetChainData = exports.NetworkValid = exports.NetworkInValid = exports.NetworkChanged = exports.AccountChanged = void 0;
 
 var _constant = require("../helpers/constant");
 

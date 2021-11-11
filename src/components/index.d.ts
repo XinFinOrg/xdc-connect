@@ -24,19 +24,22 @@ export type validChainId = 50 | 51 | 551
 
 export type ValidProvider = "xinpay" | "keystore" | "privatekey" | "dcent-inapp"
 
+export type DisplayType = "grid" | "row"
+
 
 export interface WalletConnectProps {
   onDisconnect?: (wallet: Wallet) => any
   onConnect?: (wallet: Wallet) => any
   onAddressChange?: (wallet: Wallet) => any
   onNetworkChange?: (wallet: Wallet) => any
-  modalBackdrop?:boolean
+  modalBackdrop?: boolean
   btnClass?: string
   btnName?: string
   theme?: themes
   disabled?: boolean
   deafaultChainId?: validChainId
   enabledProviders?: ValidProvider[]
+  displayType?: DisplayType
 }
 
 export class XdcConnect extends React.Component<WalletConnectProps, any> { }

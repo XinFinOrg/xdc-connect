@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CustomModalTheme = exports.CustomizeButton = exports.Default = exports.default = void 0;
+exports.default = exports.Default = exports.CustomizeButton = exports.CustomModalTheme = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 

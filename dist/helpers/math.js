@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RemoveExpo = exports.IsHex = exports.RemoveMultiplier = exports.AddMultiplier = exports.ToDoubleDigit = exports.RandomInt = exports.Random = exports.MaxOf = exports.MinOf = void 0;
+exports.ToDoubleDigit = exports.RemoveMultiplier = exports.RemoveExpo = exports.RandomInt = exports.Random = exports.MinOf = exports.MaxOf = exports.IsHex = exports.AddMultiplier = void 0;
 
 var MinOf = function MinOf(x, y) {
   return parseFloat(x) < parseFloat(y) ? parseFloat(x) : parseFloat(y);

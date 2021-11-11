@@ -96,6 +96,9 @@ class WalletConnect extends React.Component {
   };
 
   RenderWalletProvider() {
+
+    const displayType = this.props.displayType || "grid";
+
     if (this.state.providerSelected === Provider.menu)
       return (
         <div className="modal-content">
@@ -112,7 +115,7 @@ class WalletConnect extends React.Component {
             </button>
           </div>
           <div className="modal-body">
-            <div className="wallet-connect-block">
+            <div className={`wallet-connect-block ${displayType}`}>
               {this.enabledProviders.includes(LOADERS.Xinpay) ? (
                 <button onClick={initXdc3} className="wallect-connect-btn">
                   <div className="wallet-name">
@@ -200,6 +203,7 @@ class WalletConnect extends React.Component {
     const BTN_MSG = this.props.btnName || "CONNECT";
     const BTN_CLASS = this.props.btnClass || "btn btn-rounded btn-info";
     const disabled = this.props.disabled || false;
+
     let parentClass = "xdc-connect";
 
     if (this.props.theme === "dark") {

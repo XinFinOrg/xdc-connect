@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.GetNativeBalance = exports.Disconnect = exports.CallTransaction = exports.SendTransaction = exports.GetWallet = exports.XdcConnect = void 0;
+exports.XdcConnect = exports.SendTransaction = exports.GetWallet = exports.GetNativeBalance = exports.Disconnect = exports.CallTransaction = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 

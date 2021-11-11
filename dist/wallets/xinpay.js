@@ -5,16 +5,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.IsXdc3Supported = IsXdc3Supported;
-exports.GetProvider = GetProvider;
-exports.GetChainId = GetChainId;
-exports.initXdc3 = initXdc3;
-exports._initListerner = _initListerner;
-exports.GetCurrentProvider = GetCurrentProvider;
-exports.SendTransaction = SendTransaction;
+exports.ApothemProvider = void 0;
 exports.CallTransaction = CallTransaction;
+exports.GetChainId = GetChainId;
+exports.GetCurrentProvider = GetCurrentProvider;
+exports.GetNativeBalance = void 0;
+exports.GetProvider = GetProvider;
 exports.IsLocked = IsLocked;
-exports.GetNativeBalance = exports.ApothemProvider = exports.MainnetProvider = void 0;
+exports.IsXdc3Supported = IsXdc3Supported;
+exports.MainnetProvider = void 0;
+exports.SendTransaction = SendTransaction;
+exports._initListerner = _initListerner;
+exports.initXdc3 = initXdc3;
 
 var _xdc = _interopRequireDefault(require("xdc3"));
 

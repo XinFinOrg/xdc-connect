@@ -3,8 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SendTransaction = SendTransaction;
 exports.CallTransaction = CallTransaction;
+exports.SendTransaction = SendTransaction;
 
 var _xdc = _interopRequireDefault(require("xdc3"));
 

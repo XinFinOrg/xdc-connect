@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.IsJsonRpcError = exports.BUILD_BLOCK_LINK = exports.ADDR_LINK = exports.BUILD_TX_LINK = exports.GetRevertReason = exports.IsValidAddress = exports.GetAccountFromKeystore = exports.GetAccountFromPK = exports.VerifyPrivateKey = exports.Sign = exports.Computehash = void 0;
+exports.VerifyPrivateKey = exports.Sign = exports.IsValidAddress = exports.IsJsonRpcError = exports.GetRevertReason = exports.GetAccountFromPK = exports.GetAccountFromKeystore = exports.Computehash = exports.BUILD_TX_LINK = exports.BUILD_BLOCK_LINK = exports.ADDR_LINK = void 0;
 var _excluded = ["nonce", "transferType"];
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }

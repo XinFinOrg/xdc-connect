@@ -143,6 +143,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
     value: function RenderWalletProvider() {
       var _this2 = this;
 
+      var displayType = this.props.displayType || "grid";
       if (this.state.providerSelected === Provider.menu) return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: "modal-content",
         children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -167,7 +168,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           className: "modal-body",
           children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-            className: "wallet-connect-block",
+            className: "wallet-connect-block ".concat(displayType),
             children: [this.enabledProviders.includes(_constant.LOADERS.Xinpay) ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
               onClick: _xinpay.initXdc3,
               className: "wallect-connect-btn",

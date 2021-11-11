@@ -5,8 +5,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.CallTransaction = void 0;
 exports.GetNativeBalance = GetNativeBalance;
-exports.CallTransaction = exports.SendTransaction = void 0;
+exports.SendTransaction = void 0;
 
 var _xdc = _interopRequireDefault(require("xdc3"));
 
