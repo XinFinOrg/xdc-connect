@@ -207,17 +207,19 @@ export async function SendTransaction(tx) {
                 } else {
                   clearInterval(interval);
                   // reject(receipt);
-                  xdc3.eth.getTransaction(receipt.transactionHash).then((tx) => {
-                    tx = { ...tx };
-                    xdc3.eth
-                      .call(tx)
-                      .then((x) => {
-                        const other = x.replace("0x", "").slice(8);
-                        const buf = Buffer.from(other, "hex");
-                        reject({ message: buf.toString() });
-                      })
-                      .catch(() => reject({ message: "Transaction Failed" }));
-                  });
+                  xdc3.eth
+                    .getTransaction(receipt.transactionHash)
+                    .then((tx) => {
+                      tx = { ...tx };
+                      xdc3.eth
+                        .call(tx)
+                        .then((x) => {
+                          const other = x.replace("0x", "").slice(8);
+                          const buf = Buffer.from(other, "hex");
+                          reject({ message: buf.toString() });
+                        })
+                        .catch(() => reject({ message: "Transaction Failed" }));
+                    });
                 }
               }
             } catch (e) {
@@ -273,4 +275,31 @@ export async function IsLocked() {
   let xdc3 = new Xdc3(await GetProvider());
   const accounts = await xdc3.eth.getAccounts();
   return _.isEmpty(accounts);
+}
+
+export async function ExecuteBatchTX(txs) {
+  return new Promise((resolve, reject) => {
+    GetProvider()
+      .then(async (provider) => {
+        const xdc3 = new Xdc3(provider);
+
+        const batch = new xdc3.BatchRequest();
+
+        for (let tx of txs) {
+          batch.add(
+            xdc3.eth.sendTransaction.request(tx, (err, hash) => {
+              console.log(err, hash);
+            })
+          );
+        }
+
+        batch.execute();
+      })
+      .catch((e) => {
+        console.log(arguments, e);
+        console.log("resp", IsJsonRpcError(e));
+        console.log("resp", e);
+        reject(e);
+      });
+  });
 }

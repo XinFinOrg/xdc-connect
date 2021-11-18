@@ -49,6 +49,10 @@ export const SendTransaction = (tx) => {
   return Wallet.SendTransaction(tx);
 };
 
+export const ExecuteBatchTX = (txs) => {
+  return Wallet.ExecuteBatchTX(txs);
+};
+
 export const CallTransaction = (tx) => {
   return Wallet.CallTransaction(tx);
 };
