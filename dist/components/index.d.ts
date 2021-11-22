@@ -37,7 +37,7 @@ export interface WalletConnectProps {
   btnName?: string
   theme?: themes
   disabled?: boolean
-  deafaultChainId?: validChainId
+  defaultChainId?: validChainId
   enabledProviders?: ValidProvider[]
   displayType?: DisplayType
 }

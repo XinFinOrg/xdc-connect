@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.XdcConnect = exports.SendTransaction = exports.GetWallet = exports.GetNativeBalance = exports.Disconnect = exports.CallTransaction = void 0;
+exports.XdcConnect = exports.SendTransaction = exports.GetWallet = exports.GetNativeBalance = exports.ExecuteBatchTX = exports.Disconnect = exports.CallTransaction = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -81,6 +81,12 @@ var SendTransaction = function SendTransaction(tx) {
 };
 
 exports.SendTransaction = SendTransaction;
+
+var ExecuteBatchTX = function ExecuteBatchTX(txs) {
+  return Wallet.ExecuteBatchTX(txs);
+};
+
+exports.ExecuteBatchTX = ExecuteBatchTX;
 
 var CallTransaction = function CallTransaction(tx) {
   return Wallet.CallTransaction(tx);
