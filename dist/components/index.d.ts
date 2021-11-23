@@ -39,7 +39,8 @@ export interface WalletConnectProps {
   disabled?: boolean
   defaultChainId?: validChainId
   enabledProviders?: ValidProvider[]
-  displayType?: DisplayType
+  displayType?: DisplayType,
+  addToastContainer?: boolean
 }
 
 export class XdcConnect extends React.Component<WalletConnectProps, any> { }

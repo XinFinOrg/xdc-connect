@@ -13,9 +13,15 @@ import "../assets/scss/main.scss";
 import "react-toastify/dist/ReactToastify.css";
 
 export const XdcConnect = (props) => {
+  const toastContainer = props.addToastContainer ? (
+    <ToastContainer className="xdc-connect" />
+  ) : (
+    ""
+  );
+
   return (
     <Provider store={store}>
-      <ToastContainer className="xdc-connect" />
+      {toastContainer}
       <WalletConnect {...props} />
     </Provider>
   );
@@ -31,7 +37,8 @@ XdcConnect.propTypes = {
   disabled: PropTypes.bool,
   theme: PropTypes.oneOf(["light", "dark"]),
   defaultChainId: PropTypes.oneOf([50, 51, 551]),
-  enabledProviders: PropTypes.arrayOf(PropTypes.string)
+  enabledProviders: PropTypes.arrayOf(PropTypes.string),
+  addToastContainer: PropTypes.bool,
 };
 
 XdcConnect.defaultProps = {
@@ -47,10 +54,6 @@ export const GetWallet = () => {
 
 export const SendTransaction = (tx) => {
   return Wallet.SendTransaction(tx);
-};
-
-export const ExecuteBatchTX = (txs) => {
-  return Wallet.ExecuteBatchTX(txs);
 };
 
 export const CallTransaction = (tx) => {

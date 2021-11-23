@@ -7,7 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ApothemProvider = void 0;
 exports.CallTransaction = CallTransaction;
-exports.ExecuteBatchTX = ExecuteBatchTX;
 exports.GetChainId = GetChainId;
 exports.GetCurrentProvider = GetCurrentProvider;
 exports.GetNativeBalance = void 0;
@@ -42,12 +41,6 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -631,7 +624,7 @@ function _SendTransaction() {
                   }, _callee10, null, [[1, 7]]);
                 }));
 
-                return function (_x7) {
+                return function (_x6) {
                   return _ref5.apply(this, arguments);
                 };
               }()).catch(function (e) {
@@ -710,7 +703,7 @@ function _CallTransaction() {
                   }, _callee12, null, [[1, 7]]);
                 }));
 
-                return function (_x8) {
+                return function (_x7) {
                   return _ref7.apply(this, arguments);
                 };
               }()).catch(function (e) {
@@ -764,72 +757,4 @@ function _IsLocked() {
     }, _callee14);
   }));
   return _IsLocked.apply(this, arguments);
-}
-
-function ExecuteBatchTX(_x6) {
-  return _ExecuteBatchTX.apply(this, arguments);
-}
-
-function _ExecuteBatchTX() {
-  _ExecuteBatchTX = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(txs) {
-    var _arguments3 = arguments;
-    return regeneratorRuntime.wrap(function _callee16$(_context16) {
-      while (1) {
-        switch (_context16.prev = _context16.next) {
-          case 0:
-            return _context16.abrupt("return", new Promise(function (resolve, reject) {
-              GetProvider().then( /*#__PURE__*/function () {
-                var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(provider) {
-                  var xdc3, batch, _iterator, _step, tx;
-
-                  return regeneratorRuntime.wrap(function _callee15$(_context15) {
-                    while (1) {
-                      switch (_context15.prev = _context15.next) {
-                        case 0:
-                          xdc3 = new _xdc.default(provider);
-                          batch = new xdc3.BatchRequest();
-                          _iterator = _createForOfIteratorHelper(txs);
-
-                          try {
-                            for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                              tx = _step.value;
-                              batch.add(xdc3.eth.sendTransaction.request(tx, function (err, hash) {
-                                console.log(err, hash);
-                              }));
-                            }
-                          } catch (err) {
-                            _iterator.e(err);
-                          } finally {
-                            _iterator.f();
-                          }
-
-                          batch.execute();
-
-                        case 5:
-                        case "end":
-                          return _context15.stop();
-                      }
-                    }
-                  }, _callee15);
-                }));
-
-                return function (_x9) {
-                  return _ref8.apply(this, arguments);
-                };
-              }()).catch(function (e) {
-                console.log(_arguments3, e);
-                console.log("resp", (0, _crypto.IsJsonRpcError)(e));
-                console.log("resp", e);
-                reject(e);
-              });
-            }));
-
-          case 1:
-          case "end":
-            return _context16.stop();
-        }
-      }
-    }, _callee16);
-  }));
-  return _ExecuteBatchTX.apply(this, arguments);
 }

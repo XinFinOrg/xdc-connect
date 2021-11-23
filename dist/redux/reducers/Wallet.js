@@ -29,8 +29,6 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
-
 var initialState = {
   connected: false,
   address: "",
@@ -57,7 +55,7 @@ var WalletReducer = function WalletReducer() {
             rst = _objectWithoutProperties(_payload$payload, _excluded);
 
         var valid_network = false;
-        if (String(chain_id).startsWith("0x") && (0, _math.IsHex)(chain_id)) parseInt(chain_id, 16), _readOnlyError("chain_id");
+        if (String(chain_id).startsWith("0x") && (0, _math.IsHex)(chain_id)) chain_id = parseInt(chain_id, 16);
 
         if (_constant.VALID_CHAINS.includes(chain_id)) {
           valid_network = true;

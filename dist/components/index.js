@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.XdcConnect = exports.SendTransaction = exports.GetWallet = exports.GetNativeBalance = exports.ExecuteBatchTX = exports.Disconnect = exports.CallTransaction = void 0;
+exports.XdcConnect = exports.SendTransaction = exports.GetWallet = exports.GetNativeBalance = exports.Disconnect = exports.CallTransaction = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -42,11 +42,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var XdcConnect = function XdcConnect(props) {
+  var toastContainer = props.addToastContainer ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactToastify.ToastContainer, {
+    className: "xdc-connect"
+  }) : "";
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRedux.Provider, {
     store: _store.default,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactToastify.ToastContainer, {
-      className: "xdc-connect"
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_walletConnect.default, _objectSpread({}, props))]
+    children: [toastContainer, /*#__PURE__*/(0, _jsxRuntime.jsx)(_walletConnect.default, _objectSpread({}, props))]
   });
 };
 
@@ -61,7 +62,8 @@ XdcConnect.propTypes = {
   disabled: _propTypes.default.bool,
   theme: _propTypes.default.oneOf(["light", "dark"]),
   defaultChainId: _propTypes.default.oneOf([50, 51, 551]),
-  enabledProviders: _propTypes.default.arrayOf(_propTypes.default.string)
+  enabledProviders: _propTypes.default.arrayOf(_propTypes.default.string),
+  addToastContainer: _propTypes.default.bool
 };
 XdcConnect.defaultProps = {
   btnName: "CONNECT",
@@ -81,12 +83,6 @@ var SendTransaction = function SendTransaction(tx) {
 };
 
 exports.SendTransaction = SendTransaction;
-
-var ExecuteBatchTX = function ExecuteBatchTX(txs) {
-  return Wallet.ExecuteBatchTX(txs);
-};
-
-exports.ExecuteBatchTX = ExecuteBatchTX;
 
 var CallTransaction = function CallTransaction(tx) {
   return Wallet.CallTransaction(tx);

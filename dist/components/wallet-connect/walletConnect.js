@@ -109,7 +109,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
       showModal: false,
       providerSelected: Provider.menu
     };
-    _this.defaultChainId = _this.props.defaultChainId && _constant.VALID_CHAINS.includes(_this.props.defaultChainId) || _constant.DEFAULT_CHAIN_ID;
+    _this.defaultChainId = _this.props.defaultChainId && _constant.VALID_CHAINS.includes(_this.props.defaultChainId) ? _this.props.defaultChainId : _constant.DEFAULT_CHAIN_ID;
     _this.enabledProviders = _this.props.enabledProviders || Object.keys(_constant.LOADERS).map(function (x) {
       return _constant.LOADERS[x];
     });

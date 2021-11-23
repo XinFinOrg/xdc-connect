@@ -17,7 +17,7 @@ const initialState = {
 const WalletReducer = (state = initialState, payload) => {
   switch (payload.type) {
     case types.WALLET_CONNECTED: {
-      const { address, chain_id, loader, ...rst } = payload.payload;
+      let { address, chain_id, loader, ...rst } = payload.payload;
       let valid_network = false;
       if (String(chain_id).startsWith("0x") && IsHex(chain_id))
         chain_id = parseInt(chain_id, 16);

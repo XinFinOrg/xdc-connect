@@ -277,29 +277,3 @@ export async function IsLocked() {
   return _.isEmpty(accounts);
 }
 
-export async function ExecuteBatchTX(txs) {
-  return new Promise((resolve, reject) => {
-    GetProvider()
-      .then(async (provider) => {
-        const xdc3 = new Xdc3(provider);
-
-        const batch = new xdc3.BatchRequest();
-
-        for (let tx of txs) {
-          batch.add(
-            xdc3.eth.sendTransaction.request(tx, (err, hash) => {
-              console.log(err, hash);
-            })
-          );
-        }
-
-        batch.execute();
-      })
-      .catch((e) => {
-        console.log(arguments, e);
-        console.log("resp", IsJsonRpcError(e));
-        console.log("resp", e);
-        reject(e);
-      });
-  });
-}

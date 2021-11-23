@@ -116,37 +116,6 @@ export const SendTransaction = (tx) => {
   });
 };
 
-// export const ExecuteBatchTX = (txs) => {
-//   return new Promise((resolve, reject) => {
-//     const wallet = store.getState().wallet;
-//     let toastId = toast("Processing Batch TX ...", {
-//       position: "bottom-right",
-//       type: "processing-tx",
-//       autoClose: false,
-//       hideProgressBar: false,
-//       closeOnClick: false,
-//       pauseOnHover: true,
-//       draggable: false,
-//       progress: undefined,
-//       closeButton: false,
-//     });
-
-//     const address = wallet.address;
-
-//     txs = txs.map((tx) => {
-//       return { ...tx, from: address };
-//     });
-
-//     GetFuncFromLoader(wallet.loader)
-//       .ExecuteBatchTX(txs)
-//       .then(console.log)
-//       .catch(console.error)
-//       .finally(() => {
-//         if (toastId) toast.dismiss(toastId);
-//       });
-//   });
-// };
-
 export const CallTransaction = (tx) => {
   const loader = store.getState().wallet.loader;
   return GetFuncFromLoader(loader).CallTransaction(tx);

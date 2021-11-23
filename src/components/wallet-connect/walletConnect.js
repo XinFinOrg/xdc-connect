@@ -37,9 +37,10 @@ class WalletConnect extends React.Component {
     };
 
     this.defaultChainId =
-      (this.props.defaultChainId &&
-        VALID_CHAINS.includes(this.props.defaultChainId)) ||
-      DEFAULT_CHAIN_ID;
+      this.props.defaultChainId &&
+      VALID_CHAINS.includes(this.props.defaultChainId)
+        ? this.props.defaultChainId
+        : DEFAULT_CHAIN_ID;
 
     this.enabledProviders =
       this.props.enabledProviders ||
@@ -96,7 +97,6 @@ class WalletConnect extends React.Component {
   };
 
   RenderWalletProvider() {
-
     const displayType = this.props.displayType || "grid";
 
     if (this.state.providerSelected === Provider.menu)
