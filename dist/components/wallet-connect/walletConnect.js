@@ -293,7 +293,9 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
               showModal: false
             });
           },
-          children: this.RenderWalletProvider()
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactToastify.ToastContainer, {
+            children: this.RenderWalletProvider()
+          })
         })]
       });
     }

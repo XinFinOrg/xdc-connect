@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Modal, Button } from "react-bootstrap";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 import Keystore from "./Keystore";
 import PrivateKey from "./PrivateKey";
@@ -226,7 +226,7 @@ class WalletConnect extends React.Component {
           show={this.state.showModal}
           onHide={() => this.setState({ showModal: false })}
         >
-          {this.RenderWalletProvider()}
+          <ToastContainer>{this.RenderWalletProvider()}</ToastContainer>
         </Modal>
       </div>
     );
