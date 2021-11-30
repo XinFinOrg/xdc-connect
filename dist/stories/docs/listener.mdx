@@ -72,7 +72,7 @@ Fired when user successfully logouts/disconnects their wallet.
 
 ### onAddressChange
 
-Fired when user changes their default address from providers like XinPay.
+Fired when user changes their default address from providers like XinPay / XDCPay.
 
 ## APIs
 
@@ -151,7 +151,7 @@ List of interfaces of objects used in props & function arguments.
 
     export interface WalletConnectProps {
       onDisconnect?: (wallet: Wallet) => any
-      onConnect?: (wallet: Wallet) => any 
+      onConnect?: (wallet: Wallet) => any
       onAddressChange?: (wallet: Wallet) => any
       onNetworkChange?: (wallet: Wallet) => any
       modalBackdrop?: boolean
@@ -159,8 +159,10 @@ List of interfaces of objects used in props & function arguments.
       btnName?: string
       theme?: themes
       disabled?: boolean
-      deafaultChainId?: validChainId
+      defaultChainId?: validChainId
       enabledProviders?: ValidProvider[]
+      displayType?: DisplayType,
+      addToastContainer?: boolean
     }
 
 ```

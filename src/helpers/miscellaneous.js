@@ -20,6 +20,21 @@ export const IsJson = (abi) => {
   return true;
 };
 
+export const WithTimeout = (cb, timeout = 5000) => {
+  return new Promise((resolve, reject) => {
+    let int = setTimeout(() => {
+      reject("timeout");
+    }, timeout);
+
+    cb()
+      .then((resp) => {
+        clearTimeout(int);
+        resolve(resp);
+      })
+      .catch(reject);
+  });
+};
+
 Object.defineProperty(Object.prototype, "partialMatch", {
   value: function (fields) {
     for (let key of Object.keys(fields)) {

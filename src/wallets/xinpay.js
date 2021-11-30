@@ -8,6 +8,7 @@ import { CHAIN_DATA, HTTP_PROVIDER, LOADERS } from "../helpers/constant";
 import * as actions from "../actions";
 import store from "../redux/store";
 import { toast } from "react-toastify";
+import { WithTimeout } from "../helpers/miscellaneous";
 
 let addresses, xdc3, addressChangeIntervalRef;
 
@@ -35,16 +36,16 @@ export async function GetChainId() {
 
 export async function initXdc3() {
   try {
-    const isLocked = await IsLocked();
+    const isLocked = await WithTimeout(IsLocked, 2000);
     if (isLocked === true) {
-      toast("Please unlock XinPay wallet to continue", { autoClose: 2000 });
+      toast("Please unlock XDCPay wallet to continue", { autoClose: 2000 });
       return store.dispatch(actions.WalletDisconnected());
     }
     const isXdc3Supported = IsXdc3Supported();
     if (!isXdc3Supported) {
       toast(
         <div>
-          XinPay not available in the browser. Please refer <a href="/">here</a>
+          XDCPay not available in the browser. Please refer <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en">here</a>
         </div>,
         {
           autoClose: 2000,
@@ -56,7 +57,7 @@ export async function initXdc3() {
     if ((await GetCurrentProvider()) !== "xinpay") {
       toast(
         <div>
-          XinPay not available in the browser. Please refer <a href="/">here</a>
+          XDCPay not available in the browser. Please refer <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en">here</a>
         </div>,
         {
           autoClose: 2000,
@@ -81,7 +82,26 @@ export async function initXdc3() {
       })
     );
   } catch (e) {
-    console.log(e);
+    if (e==="timeout") {
+      toast(
+        <div>
+          Error while connecting to XDCPay: Timeout. Please check you XDCPay or try after refresh.
+        </div>,
+        {
+          autoClose: 2000,
+        }
+      );
+      return store.dispatch(actions.WalletDisconnected());  
+    }
+    toast(
+      <div>
+        Error while connecting to XDCPay provider
+      </div>,
+      {
+        autoClose: 2000,
+      }
+    );
+    return store.dispatch(actions.WalletDisconnected());
   }
 }
 

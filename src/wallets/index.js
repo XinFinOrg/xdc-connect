@@ -63,7 +63,7 @@ export const SendTransaction = (tx) => {
           const { transactionHash } = resp;
           toast(
             <div>
-              Sucsess&nbsp;
+              Success&nbsp;
               <a
                 href={BUILD_TX_LINK(wallet.explorer, transactionHash)}
                 rel="noreferrer"
