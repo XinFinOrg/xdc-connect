@@ -92,7 +92,7 @@ var SendTransaction = function SendTransaction(tx) {
       if (resp.transactionHash) {
         var transactionHash = resp.transactionHash;
         (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: ["Sucsess\xA0", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+          children: ["Success\xA0", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
             href: (0, _crypto.BUILD_TX_LINK)(wallet.explorer, transactionHash),
             rel: "noreferrer",
             target: "_blank",

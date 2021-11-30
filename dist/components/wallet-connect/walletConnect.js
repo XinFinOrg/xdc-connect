@@ -175,7 +175,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
               children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
                 className: "wallet-name",
                 children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h4", {
-                  children: "XinPay"
+                  children: "XDCPay"
                 })
               }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
                 className: "wallet-icon",

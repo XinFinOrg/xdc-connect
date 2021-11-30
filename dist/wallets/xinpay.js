@@ -34,6 +34,8 @@ var _store = _interopRequireDefault(require("../redux/store"));
 
 var _reactToastify = require("react-toastify");
 
+var _miscellaneous = require("../helpers/miscellaneous");
+
 var _jsxRuntime = require("react/jsx-runtime");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -145,7 +147,7 @@ function _initXdc() {
           case 0:
             _context7.prev = 0;
             _context7.next = 3;
-            return IsLocked();
+            return (0, _miscellaneous.WithTimeout)(IsLocked, 2000);
 
           case 3:
             isLocked = _context7.sent;
@@ -155,7 +157,7 @@ function _initXdc() {
               break;
             }
 
-            (0, _reactToastify.toast)("Please unlock XinPay wallet to continue", {
+            (0, _reactToastify.toast)("Please unlock XDCPay wallet to continue", {
               autoClose: 2000
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
@@ -169,8 +171,8 @@ function _initXdc() {
             }
 
             (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-              children: ["XinPay not available in the browser. Please refer ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
-                href: "/",
+              children: ["XDCPay not available in the browser. Please refer ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+                href: "https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en",
                 children: "here"
               })]
             }), {
@@ -191,8 +193,8 @@ function _initXdc() {
             }
 
             (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-              children: ["XinPay not available in the browser. Please refer ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
-                href: "/",
+              children: ["XDCPay not available in the browser. Please refer ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+                href: "https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en",
                 children: "here"
               })]
             }), {
@@ -234,9 +236,28 @@ function _initXdc() {
           case 34:
             _context7.prev = 34;
             _context7.t1 = _context7["catch"](0);
-            console.log(_context7.t1);
 
-          case 37:
+            if (!(_context7.t1 === "timeout")) {
+              _context7.next = 39;
+              break;
+            }
+
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: "Error while connecting to XDCPay: Timeout. Please check you XDCPay or try after refresh."
+            }), {
+              autoClose: 2000
+            });
+            return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
+
+          case 39:
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: "Error while connecting to XDCPay provider"
+            }), {
+              autoClose: 2000
+            });
+            return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
+
+          case 41:
           case "end":
             return _context7.stop();
         }

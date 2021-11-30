@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ObjToArr = exports.IsJson = exports.FilterStructResp = void 0;
+exports.WithTimeout = exports.ObjToArr = exports.IsJson = exports.FilterStructResp = void 0;
 
 var ObjToArr = function ObjToArr(obj) {
   return Object.keys(obj).map(function (key) {
@@ -36,6 +36,21 @@ var IsJson = function IsJson(abi) {
 };
 
 exports.IsJson = IsJson;
+
+var WithTimeout = function WithTimeout(cb) {
+  var timeout = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5000;
+  return new Promise(function (resolve, reject) {
+    var int = setTimeout(function () {
+      reject("timeout");
+    }, timeout);
+    cb().then(function (resp) {
+      clearTimeout(int);
+      resolve(resp);
+    }).catch(reject);
+  });
+};
+
+exports.WithTimeout = WithTimeout;
 Object.defineProperty(Object.prototype, "partialMatch", {
   value: function value(fields) {
     for (var _i = 0, _Object$keys = Object.keys(fields); _i < _Object$keys.length; _i++) {
