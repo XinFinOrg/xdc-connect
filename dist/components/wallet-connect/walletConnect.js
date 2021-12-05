@@ -113,6 +113,8 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
     _this.enabledProviders = _this.props.enabledProviders || Object.keys(_constant.LOADERS).map(function (x) {
       return _constant.LOADERS[x];
     });
+    if (_this.props.rpcProvider) _this.props.SetRpcProvider(_this.props.rpcProvider);
+    if (_this.props.wsProvider) _this.props.SetWsProvider(_this.props.wsProvider);
     return _this;
   }
 

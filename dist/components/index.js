@@ -63,7 +63,9 @@ XdcConnect.propTypes = {
   theme: _propTypes.default.oneOf(["light", "dark"]),
   defaultChainId: _propTypes.default.oneOf([50, 51, 551]),
   enabledProviders: _propTypes.default.arrayOf(_propTypes.default.string),
-  addToastContainer: _propTypes.default.bool
+  addToastContainer: _propTypes.default.bool,
+  rpcProvider: _propTypes.default.string,
+  wsProvider: _propTypes.default.string
 };
 XdcConnect.defaultProps = {
   btnName: "CONNECT",

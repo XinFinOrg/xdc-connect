@@ -45,45 +45,52 @@ function _SendTransaction() {
           case 0:
             return _context2.abrupt("return", new Promise( /*#__PURE__*/function () {
               var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resolve, reject) {
-                var data, account, privateKey, xdc3, gasLimit, reason, signed;
+                var data, _data$wallet, account, rpc_provider, privateKey, provider, xdc3, gasLimit, reason, signed;
+
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
                       case 0:
                         data = _store.default.getState();
-                        account = data.wallet.account;
+                        _data$wallet = data.wallet, account = _data$wallet.account, rpc_provider = _data$wallet.rpc_provider;
                         if (!account) reject("Account not loaded");
                         privateKey = account.privateKey;
                         if (_lodash.default.isEmpty(privateKey)) reject("Account not loaded");
-                        xdc3 = new _xdc.default(new _xdc.default.providers.HttpProvider(_constant.DEFAULT_PROVIDER));
-                        _context.prev = 6;
-                        _context.next = 9;
+                        provider = _constant.DEFAULT_PROVIDER;
+
+                        if (rpc_provider) {
+                          provider = rpc_provider;
+                        }
+
+                        xdc3 = new _xdc.default(new _xdc.default.providers.HttpProvider(provider));
+                        _context.prev = 8;
+                        _context.next = 11;
                         return xdc3.eth.estimateGas(tx);
 
-                      case 9:
+                      case 11:
                         gasLimit = _context.sent;
-                        _context.next = 19;
+                        _context.next = 21;
                         break;
 
-                      case 12:
-                        _context.prev = 12;
-                        _context.t0 = _context["catch"](6);
-                        _context.next = 16;
+                      case 14:
+                        _context.prev = 14;
+                        _context.t0 = _context["catch"](8);
+                        _context.next = 18;
                         return (0, _crypto.GetRevertReason)(tx);
 
-                      case 16:
+                      case 18:
                         reason = _context.sent;
                         reject({
                           message: reason
                         });
                         return _context.abrupt("return");
 
-                      case 19:
+                      case 21:
                         tx["gas"] = gasLimit;
-                        _context.next = 22;
+                        _context.next = 24;
                         return xdc3.eth.accounts.signTransaction(tx, privateKey);
 
-                      case 22:
+                      case 24:
                         signed = _context.sent;
                         xdc3.eth.sendSignedTransaction(signed.rawTransaction).once("receipt", function (receipt) {
                           if (receipt !== null) {
@@ -108,12 +115,12 @@ function _SendTransaction() {
                           }
                         });
 
-                      case 24:
+                      case 26:
                       case "end":
                         return _context.stop();
                     }
                   }
-                }, _callee, null, [[6, 12]]);
+                }, _callee, null, [[8, 14]]);
               }));
 
               return function (_x3, _x4) {
@@ -143,40 +150,47 @@ function _CallTransaction() {
           case 0:
             return _context4.abrupt("return", new Promise( /*#__PURE__*/function () {
               var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(resolve, reject) {
-                var data, account, privateKey, xdc3, gasLimit, reason;
+                var data, _data$wallet2, account, rpc_provider, privateKey, provider, xdc3, gasLimit, reason;
+
                 return regeneratorRuntime.wrap(function _callee3$(_context3) {
                   while (1) {
                     switch (_context3.prev = _context3.next) {
                       case 0:
                         data = _store.default.getState();
-                        account = data.wallet.account;
+                        _data$wallet2 = data.wallet, account = _data$wallet2.account, rpc_provider = _data$wallet2.rpc_provider;
                         if (!account) reject("Account not loaded");
                         privateKey = account.privateKey;
                         if (_lodash.default.isEmpty(privateKey)) reject("Account not loaded");
-                        xdc3 = new _xdc.default(new _xdc.default.providers.HttpProvider(_constant.DEFAULT_PROVIDER));
-                        _context3.prev = 6;
-                        _context3.next = 9;
+                        provider = _constant.DEFAULT_PROVIDER;
+
+                        if (rpc_provider) {
+                          provider = rpc_provider;
+                        }
+
+                        xdc3 = new _xdc.default(new _xdc.default.providers.HttpProvider(provider));
+                        _context3.prev = 8;
+                        _context3.next = 11;
                         return xdc3.eth.estimateGas(tx);
 
-                      case 9:
+                      case 11:
                         gasLimit = _context3.sent;
-                        _context3.next = 19;
+                        _context3.next = 21;
                         break;
 
-                      case 12:
-                        _context3.prev = 12;
-                        _context3.t0 = _context3["catch"](6);
-                        _context3.next = 16;
+                      case 14:
+                        _context3.prev = 14;
+                        _context3.t0 = _context3["catch"](8);
+                        _context3.next = 18;
                         return (0, _crypto.GetRevertReason)(tx);
 
-                      case 16:
+                      case 18:
                         reason = _context3.sent;
                         reject({
                           message: reason
                         });
                         return _context3.abrupt("return");
 
-                      case 19:
+                      case 21:
                         tx["gas"] = gasLimit;
                         xdc3.eth.call(tx).then(function (date) {
                           resolve(date);
@@ -184,12 +198,12 @@ function _CallTransaction() {
                           return reject(e);
                         });
 
-                      case 21:
+                      case 23:
                       case "end":
                         return _context3.stop();
                     }
                   }
-                }, _callee3, null, [[6, 12]]);
+                }, _callee3, null, [[8, 14]]);
               }));
 
               return function (_x5, _x6) {

@@ -70,6 +70,20 @@ var WalletReducer = function WalletReducer() {
         }, rst);
       }
 
+    case types.SET_RPC_PROVIDER:
+      {
+        return _objectSpread(_objectSpread({}, state), {}, {
+          rpc_provider: payload.payload
+        });
+      }
+
+    case types.SET_WS_PROVIDER:
+      {
+        return _objectSpread(_objectSpread({}, state), {}, {
+          ws_provider: payload.payload
+        });
+      }
+
     case types.WALLET_DISCONNECTED:
       {
         return _objectSpread(_objectSpread({}, state), {}, {

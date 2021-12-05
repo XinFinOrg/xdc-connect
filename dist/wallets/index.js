@@ -61,7 +61,16 @@ function GetFuncFromLoader(loader) {
 
 function GetNativeBalance(address) {
   return new Promise(function (resolve, reject) {
-    var xdc3 = new _xdc.default(new _xdc.default.providers.HttpProvider(_constant.DEFAULT_PROVIDER));
+    var data = _store.default.getState();
+
+    var rpc_provider = data.wallet.rpc_provider;
+    var provider = _constant.DEFAULT_PROVIDER;
+
+    if (rpc_provider) {
+      provider = rpc_provider;
+    }
+
+    var xdc3 = new _xdc.default(new _xdc.default.providers.HttpProvider(provider));
 
     if (!address) {
       var wallet = _store.default.getState();

@@ -4,7 +4,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.VerifyPrivateKey = exports.Sign = exports.IsValidAddress = exports.IsJsonRpcError = exports.GetRevertReason = exports.GetAccountFromPK = exports.GetAccountFromKeystore = exports.Computehash = exports.BUILD_TX_LINK = exports.BUILD_BLOCK_LINK = exports.ADDR_LINK = void 0;
+
+var _store = _interopRequireDefault(require("../redux/store"));
+
 var _excluded = ["nonce", "transferType"];
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -108,7 +113,16 @@ exports.IsValidAddress = IsValidAddress;
 
 var GetRevertReason = function GetRevertReason(tx) {
   return new Promise(function (resolve, reject) {
-    var xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(DEFAULT_PROVIDER));
+    var data = _store.default.getState();
+
+    var rpc_provider = data.wallet.rpc_provider;
+    var provider = DEFAULT_PROVIDER;
+
+    if (rpc_provider) {
+      provider = rpc_provider;
+    }
+
+    var xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(provider));
     xdc3.eth.call(tx).then(function (x) {
       console.log("x", x, utils.toAscii(x));
       var other = x.replace("0x", "").slice(8);
