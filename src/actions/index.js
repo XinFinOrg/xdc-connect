@@ -53,3 +53,17 @@ export const NetworkInValid = () => {
     type: Types.NETWORK_INVALID,
   };
 };
+
+export const SetRpcProvider = (rpc_provider) => {
+  return {
+    type: Types.SET_RPC_PROVIDER,
+    payload: rpc_provider,
+  };
+};
+
+export const SetWsProvider = (ws_provider) => {
+  return {
+    type: Types.SET_WS_PROVIDER,
+    payload: ws_provider,
+  };
+};

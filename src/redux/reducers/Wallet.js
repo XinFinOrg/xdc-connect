@@ -25,7 +25,7 @@ const WalletReducer = (state = initialState, payload) => {
       if (VALID_CHAINS.includes(chain_id)) {
         valid_network = true;
       }
-      
+
       return {
         ...state,
         connected: true,
@@ -34,6 +34,20 @@ const WalletReducer = (state = initialState, payload) => {
         loader,
         valid_network,
         ...rst,
+      };
+    }
+
+    case types.SET_RPC_PROVIDER: {
+      return {
+        ...state,
+        rpc_provider: payload.payload,
+      };
+    }
+
+    case types.SET_WS_PROVIDER: {
+      return {
+        ...state,
+        ws_provider: payload.payload,
       };
     }
 

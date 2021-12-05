@@ -9,3 +9,6 @@ export const NETWORK_VALID = "NETWORK_VALID";
 export const NETWORK_INVALID = "NETWORK_INVALID";
 
 export const SET_CHAIN_DATA = "SET_CHAIN_DATA";
+
+export const SET_RPC_PROVIDER = "SET_RPC_PROVIDER";
+export const SET_WS_PROVIDER = "SET_WS_PROVIDER";

@@ -15,12 +15,18 @@ import { DEFAULT_PROVIDER } from "../helpers/constant";
 export async function SendTransaction(tx) {
   return new Promise(async (resolve, reject) => {
     const data = store.getState();
-    const { account } = data.wallet;
+    const { account, rpc_provider } = data.wallet;
     if (!account) reject("Account not loaded");
     const { privateKey } = account;
     if (_.isEmpty(privateKey)) reject("Account not loaded");
 
-    const xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(DEFAULT_PROVIDER));
+    let provider = DEFAULT_PROVIDER;
+
+    if (rpc_provider) {
+      provider = rpc_provider;
+    }
+
+    const xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(provider));
 
     let gasLimit;
 
@@ -63,12 +69,18 @@ export async function SendTransaction(tx) {
 export async function CallTransaction(tx) {
   return new Promise(async (resolve, reject) => {
     const data = store.getState();
-    const { account } = data.wallet;
+    const { account, rpc_provider } = data.wallet;
     if (!account) reject("Account not loaded");
     const { privateKey } = account;
     if (_.isEmpty(privateKey)) reject("Account not loaded");
 
-    const xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(DEFAULT_PROVIDER));
+    let provider = DEFAULT_PROVIDER;
+
+    if (rpc_provider) {
+      provider = rpc_provider;
+    }
+
+    const xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(provider));
 
     let gasLimit;
 

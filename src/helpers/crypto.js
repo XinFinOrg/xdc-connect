@@ -1,3 +1,5 @@
+import store from "../redux/store";
+
 const Xdc3 = require("xdc3");
 const Accounts = require("xdc3-eth-accounts");
 const { utils } = Xdc3;
@@ -65,7 +67,16 @@ export const IsValidAddress = (address) => {
 
 export const GetRevertReason = (tx) => {
   return new Promise((resolve, reject) => {
-    const xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(DEFAULT_PROVIDER));
+    const data = store.getState();
+    const { rpc_provider } = data.wallet;
+
+    let provider = DEFAULT_PROVIDER;
+
+    if (rpc_provider) {
+      provider = rpc_provider;
+    }
+
+    const xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(provider));
     xdc3.eth
       .call(tx)
       .then((x) => {
@@ -109,5 +120,7 @@ export const BUILD_BLOCK_LINK = (explorer, hash) => {
 };
 
 export const IsJsonRpcError = (err) => {
-  return err.message && err.message.split("\n")[0] === "Internal JSON-RPC error.";
+  return (
+    err.message && err.message.split("\n")[0] === "Internal JSON-RPC error."
+  );
 };

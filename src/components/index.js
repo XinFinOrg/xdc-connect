@@ -39,6 +39,8 @@ XdcConnect.propTypes = {
   defaultChainId: PropTypes.oneOf([50, 51, 551]),
   enabledProviders: PropTypes.arrayOf(PropTypes.string),
   addToastContainer: PropTypes.bool,
+  rpcProvider: PropTypes.string,
+  wsProvider: PropTypes.string,
 };
 
 XdcConnect.defaultProps = {

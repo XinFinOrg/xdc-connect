@@ -32,7 +32,16 @@ function GetFuncFromLoader(loader) {
  */
 export function GetNativeBalance(address) {
   return new Promise((resolve, reject) => {
-    const xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(DEFAULT_PROVIDER));
+    const data = store.getState();
+    const { rpc_provider } = data.wallet;
+
+    let provider = DEFAULT_PROVIDER;
+
+    if (rpc_provider) {
+      provider = rpc_provider;
+    }
+
+    const xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(provider));
     if (!address) {
       const wallet = store.getState();
       address = wallet.wallet.address;

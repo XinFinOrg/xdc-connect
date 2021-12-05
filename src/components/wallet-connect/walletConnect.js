@@ -45,6 +45,11 @@ class WalletConnect extends React.Component {
     this.enabledProviders =
       this.props.enabledProviders ||
       Object.keys(LOADERS).map((x) => LOADERS[x]);
+
+    if (this.props.rpcProvider)
+      this.props.SetRpcProvider(this.props.rpcProvider);
+
+    if (this.props.wsProvider) this.props.SetWsProvider(this.props.wsProvider);
   }
 
   componentDidUpdate(prevProps) {
