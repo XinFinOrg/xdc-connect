@@ -1,34 +1,34 @@
 {
   "files": {
-    "0.7d0a79a9.iframe.bundle.js": "./0.7d0a79a9.iframe.bundle.js",
+    "0.1258f59e.iframe.bundle.js": "./0.1258f59e.iframe.bundle.js",
     "main.css": "./static/css/main.d4bb1a9f.chunk.css",
-    "main.js": "./main.c1fea2de.iframe.bundle.js",
+    "main.js": "./main.f8625302.iframe.bundle.js",
     "main.css.map": "./static/css/main.d4bb1a9f.chunk.css.map",
-    "runtime~main.js": "./runtime~main.ce7cb771.iframe.bundle.js",
+    "runtime~main.js": "./runtime~main.ceb0a61c.iframe.bundle.js",
     "vendors~main.css": "./static/css/vendors~main.c55f41dc.chunk.css",
-    "vendors~main.js": "./vendors~main.7e544d34.iframe.bundle.js",
+    "vendors~main.js": "./vendors~main.41ab41e3.iframe.bundle.js",
     "vendors~main.css.map": "./static/css/vendors~main.c55f41dc.chunk.css.map",
-    "vendors~main.js.map": "./vendors~main.7e544d34.iframe.bundle.js.map",
+    "vendors~main.js.map": "./vendors~main.41ab41e3.iframe.bundle.js.map",
     "4.e9ce7e0c.iframe.bundle.js": "./4.e9ce7e0c.iframe.bundle.js",
     "4.e9ce7e0c.iframe.bundle.js.map": "./4.e9ce7e0c.iframe.bundle.js.map",
-    "5.8ba749c0.iframe.bundle.js": "./5.8ba749c0.iframe.bundle.js",
-    "6.e63fcfeb.iframe.bundle.js": "./6.e63fcfeb.iframe.bundle.js",
-    "6.e63fcfeb.iframe.bundle.js.map": "./6.e63fcfeb.iframe.bundle.js.map",
+    "5.25a29088.iframe.bundle.js": "./5.25a29088.iframe.bundle.js",
+    "6.1b6c0921.iframe.bundle.js": "./6.1b6c0921.iframe.bundle.js",
+    "6.1b6c0921.iframe.bundle.js.map": "./6.1b6c0921.iframe.bundle.js.map",
     "7.6888f801.iframe.bundle.js": "./7.6888f801.iframe.bundle.js",
     "4.e9ce7e0c.iframe.bundle.js.LICENSE.txt": "./4.e9ce7e0c.iframe.bundle.js.LICENSE.txt",
-    "6.e63fcfeb.iframe.bundle.js.LICENSE.txt": "./6.e63fcfeb.iframe.bundle.js.LICENSE.txt",
+    "6.1b6c0921.iframe.bundle.js.LICENSE.txt": "./6.1b6c0921.iframe.bundle.js.LICENSE.txt",
     "iframe.html": "./iframe.html",
     "static/media/dcent-logo.7df30b03.png": "./static/media/dcent-logo.7df30b03.png",
     "static/media/keystore-logo.9f7aa6a2.png": "./static/media/keystore-logo.9f7aa6a2.png",
     "static/media/privatekey-logo.0b3bc829.png": "./static/media/privatekey-logo.0b3bc829.png",
     "static/media/xinpay-logo.89b1287c.png": "./static/media/xinpay-logo.89b1287c.png",
-    "vendors~main.7e544d34.iframe.bundle.js.LICENSE.txt": "./vendors~main.7e544d34.iframe.bundle.js.LICENSE.txt"
+    "vendors~main.41ab41e3.iframe.bundle.js.LICENSE.txt": "./vendors~main.41ab41e3.iframe.bundle.js.LICENSE.txt"
   },
   "entrypoints": [
-    "runtime~main.ce7cb771.iframe.bundle.js",
+    "runtime~main.ceb0a61c.iframe.bundle.js",
     "static/css/vendors~main.c55f41dc.chunk.css",
-    "vendors~main.7e544d34.iframe.bundle.js",
+    "vendors~main.41ab41e3.iframe.bundle.js",
     "static/css/main.d4bb1a9f.chunk.css",
-    "main.c1fea2de.iframe.bundle.js"
+    "main.f8625302.iframe.bundle.js"
   ]
 }

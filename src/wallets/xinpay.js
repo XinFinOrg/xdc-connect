@@ -126,7 +126,7 @@ export async function initXdc3() {
     if (e === "timeout") {
       toast(
         <div>
-          Error while connecting to XDCPay: Timeout. Please check you XDCPay or
+          Error while connecting to XDCPay: Timeout. Please check your XDCPay or
           try after refresh.
         </div>,
         {

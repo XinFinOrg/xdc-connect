@@ -280,7 +280,7 @@ function _initXdc() {
             }
 
             (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-              children: "Error while connecting to XDCPay: Timeout. Please check you XDCPay or try after refresh."
+              children: "Error while connecting to XDCPay: Timeout. Please check your XDCPay or try after refresh."
             }), {
               autoClose: false
             });
