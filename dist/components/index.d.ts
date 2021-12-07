@@ -40,6 +40,7 @@ export interface WalletConnectProps {
   onAddressChange?: (wallet: Wallet) => any;
   onNetworkChange?: (wallet: Wallet) => any;
   modalBackdrop?: boolean;
+  showButton?: boolean;
   btnClass?: string;
   btnName?: string;
   theme?: themes;

@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import Xdc3 from "xdc3";
-import { XdcConnect, Disconnect, CallTransaction } from "./components/";
+import {
+  XdcConnect,
+  Disconnect,
+  CallTransaction,
+  ForceShowModal,
+  ForceCloseModal,
+} from "./components/";
 // import "./App.css";
 
 const address = "xdc50d366a72012dfddae856e5e4525e8d01b698560";
@@ -22,6 +28,8 @@ function App() {
   return (
     <div className="App">
       <XdcConnect
+        addToastContainer={true}
+        // showButton={tr}
         displayType="grid"
         btnClass={
           wallet.connected
@@ -52,7 +60,11 @@ function App() {
           setwallet(wallet);
         }}
       />
-      {wallet.connected ? <button onClick={Disconnect}>Logout</button> : ""}
+      {wallet.connected ? (
+        <button onClick={Disconnect}>Logout</button>
+      ) : (
+        <button onClick={() => ForceShowModal()}>XDC Connect</button>
+      )}
     </div>
   );
 }
