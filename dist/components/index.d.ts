@@ -44,6 +44,7 @@ export interface WalletConnectProps {
   enabledProviders?: ValidProvider[];
   displayType?: DisplayType;
   addToastContainer?: boolean;
+  toastContainer?: any;
   rpcProvider?: string;
   wsProvider?: string;
 }

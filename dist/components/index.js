@@ -42,7 +42,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var XdcConnect = function XdcConnect(props) {
-  var toastContainer = props.addToastContainer ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactToastify.ToastContainer, {
+  var toastContainer = props.addToastContainer ? props.toastContainer ? props.toastContainer : /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactToastify.ToastContainer, {
     className: "xdc-connect"
   }) : "";
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRedux.Provider, {

@@ -140,20 +140,75 @@ function initXdc3() {
 
 function _initXdc() {
   _initXdc = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
-    var isLocked, isXdc3Supported, provider, accounts, chain_id;
+    var currentProvider, isLocked, provider, accounts, chain_id;
     return regeneratorRuntime.wrap(function _callee7$(_context7) {
       while (1) {
         switch (_context7.prev = _context7.next) {
           case 0:
             _context7.prev = 0;
-            _context7.next = 3;
+
+            if (window.ethereum) {
+              _context7.next = 4;
+              break;
+            }
+
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+              children: ["XDCPay not available in the browser. Please refer", " ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+                href: "https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en",
+                children: "here"
+              })]
+            }), {
+              autoClose: false
+            });
+            return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
+
+          case 4:
+            _context7.next = 6;
+            return GetCurrentProvider();
+
+          case 6:
+            currentProvider = _context7.sent;
+
+            if (!(currentProvider === "metamask")) {
+              _context7.next = 10;
+              break;
+            }
+
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+              children: ["Metamask detected. Please disable Metamask & install", " ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+                href: "https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en",
+                children: "XDCPay"
+              }), "."]
+            }), {
+              autoClose: false
+            });
+            return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
+
+          case 10:
+            if (!(currentProvider !== "xinpay")) {
+              _context7.next = 13;
+              break;
+            }
+
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+              children: ["XDCPay not available in the browser. Please refer", " ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+                href: "https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en",
+                children: "here"
+              })]
+            }), {
+              autoClose: false
+            });
+            return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
+
+          case 13:
+            _context7.next = 15;
             return (0, _miscellaneous.WithTimeout)(IsLocked, 2000);
 
-          case 3:
+          case 15:
             isLocked = _context7.sent;
 
             if (!(isLocked === true)) {
-              _context7.next = 7;
+              _context7.next = 19;
               break;
             }
 
@@ -162,69 +217,51 @@ function _initXdc() {
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
 
-          case 7:
-            isXdc3Supported = IsXdc3Supported();
-
-            if (isXdc3Supported) {
-              _context7.next = 11;
-              break;
-            }
-
-            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-              children: ["XDCPay not available in the browser. Please refer ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
-                href: "https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en",
-                children: "here"
-              })]
-            }), {
-              autoClose: 2000
-            });
-            return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
-
-          case 11:
-            _context7.next = 13;
+          case 19:
+            _context7.next = 21;
             return GetCurrentProvider();
 
-          case 13:
+          case 21:
             _context7.t0 = _context7.sent;
 
             if (!(_context7.t0 !== "xinpay")) {
-              _context7.next = 17;
+              _context7.next = 25;
               break;
             }
 
             (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-              children: ["XDCPay not available in the browser. Please refer ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+              children: ["XDCPay not available in the browser. Please refer", " ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
                 href: "https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en",
                 children: "here"
               })]
             }), {
-              autoClose: 2000
+              autoClose: false
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
 
-          case 17:
-            _context7.next = 19;
+          case 25:
+            _context7.next = 27;
             return window.ethereum.enable();
 
-          case 19:
+          case 27:
             _initListerner();
 
-            _context7.next = 22;
+            _context7.next = 30;
             return GetProvider();
 
-          case 22:
+          case 30:
             provider = _context7.sent;
             xdc3 = new _xdc.default(provider);
-            _context7.next = 26;
+            _context7.next = 34;
             return xdc3.eth.getAccounts();
 
-          case 26:
+          case 34:
             accounts = _context7.sent;
             addresses = accounts;
-            _context7.next = 30;
+            _context7.next = 38;
             return xdc3.eth.getChainId();
 
-          case 30:
+          case 38:
             chain_id = _context7.sent;
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletConnected({
               address: accounts[0],
@@ -233,36 +270,36 @@ function _initXdc() {
               explorer: _constant.CHAIN_DATA[chain_id]
             })));
 
-          case 34:
-            _context7.prev = 34;
+          case 42:
+            _context7.prev = 42;
             _context7.t1 = _context7["catch"](0);
 
             if (!(_context7.t1 === "timeout")) {
-              _context7.next = 39;
+              _context7.next = 47;
               break;
             }
 
             (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
               children: "Error while connecting to XDCPay: Timeout. Please check you XDCPay or try after refresh."
             }), {
-              autoClose: 2000
+              autoClose: false
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
 
-          case 39:
+          case 47:
             (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
               children: "Error while connecting to XDCPay provider"
             }), {
-              autoClose: 2000
+              autoClose: false
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
 
-          case 41:
+          case 49:
           case "end":
             return _context7.stop();
         }
       }
-    }, _callee7, null, [[0, 34]]);
+    }, _callee7, null, [[0, 42]]);
   }));
   return _initXdc.apply(this, arguments);
 }

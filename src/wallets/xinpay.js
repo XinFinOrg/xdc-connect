@@ -130,7 +130,7 @@ export async function initXdc3() {
           try after refresh.
         </div>,
         {
-          autoClose: 4000,
+          autoClose: false,
         }
       );
       return store.dispatch(actions.WalletDisconnected());
