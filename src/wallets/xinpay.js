@@ -36,31 +36,72 @@ export async function GetChainId() {
 
 export async function initXdc3() {
   try {
-    const isLocked = await WithTimeout(IsLocked, 2000);
-    if (isLocked === true) {
-      toast("Please unlock XDCPay wallet to continue", { autoClose: 2000 });
-      return store.dispatch(actions.WalletDisconnected());
-    }
-    const isXdc3Supported = IsXdc3Supported();
-    if (!isXdc3Supported) {
+    if (!window.ethereum) {
       toast(
         <div>
-          XDCPay not available in the browser. Please refer <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en">here</a>
+          XDCPay not available in the browser. Please refer{" "}
+          <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en">
+            here
+          </a>
         </div>,
         {
-          autoClose: 2000,
+          autoClose: false,
         }
       );
 
       return store.dispatch(actions.WalletDisconnected());
     }
+
+    const currentProvider = await GetCurrentProvider();
+
+    if (currentProvider === "metamask") {
+      toast(
+        <div>
+          Metamask detected. Please disable Metamask & install{" "}
+          <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en">
+            XDCPay
+          </a>
+          .
+        </div>,
+        {
+          autoClose: false,
+        }
+      );
+      return store.dispatch(actions.WalletDisconnected());
+    }
+
+    if (currentProvider !== "xinpay") {
+      toast(
+        <div>
+          XDCPay not available in the browser. Please refer{" "}
+          <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en">
+            here
+          </a>
+        </div>,
+        {
+          autoClose: false,
+        }
+      );
+
+      return store.dispatch(actions.WalletDisconnected());
+    }
+
+    const isLocked = await WithTimeout(IsLocked, 2000);
+    if (isLocked === true) {
+      toast("Please unlock XDCPay wallet to continue", { autoClose: 2000 });
+      return store.dispatch(actions.WalletDisconnected());
+    }
+
     if ((await GetCurrentProvider()) !== "xinpay") {
       toast(
         <div>
-          XDCPay not available in the browser. Please refer <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en">here</a>
+          XDCPay not available in the browser. Please refer{" "}
+          <a href="https://chrome.google.com/webstore/detail/xdcpay/bocpokimicclpaiekenaeelehdjllofo?hl=en">
+            here
+          </a>
         </div>,
         {
-          autoClose: 2000,
+          autoClose: false,
         }
       );
       return store.dispatch(actions.WalletDisconnected());
@@ -82,25 +123,21 @@ export async function initXdc3() {
       })
     );
   } catch (e) {
-    if (e==="timeout") {
+    if (e === "timeout") {
       toast(
         <div>
-          Error while connecting to XDCPay: Timeout. Please check you XDCPay or try after refresh.
+          Error while connecting to XDCPay: Timeout. Please check you XDCPay or
+          try after refresh.
         </div>,
         {
-          autoClose: 2000,
+          autoClose: 4000,
         }
       );
-      return store.dispatch(actions.WalletDisconnected());  
+      return store.dispatch(actions.WalletDisconnected());
     }
-    toast(
-      <div>
-        Error while connecting to XDCPay provider
-      </div>,
-      {
-        autoClose: 2000,
-      }
-    );
+    toast(<div>Error while connecting to XDCPay provider</div>, {
+      autoClose: false,
+    });
     return store.dispatch(actions.WalletDisconnected());
   }
 }
@@ -296,4 +333,3 @@ export async function IsLocked() {
   const accounts = await xdc3.eth.getAccounts();
   return _.isEmpty(accounts);
 }
-

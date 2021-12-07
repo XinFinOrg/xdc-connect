@@ -14,7 +14,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const XdcConnect = (props) => {
   const toastContainer = props.addToastContainer ? (
-    <ToastContainer className="xdc-connect" />
+    props.toastContainer ? (
+      props.toastContainer
+    ) : (
+      <ToastContainer className="xdc-connect" />
+    )
   ) : (
     ""
   );
