@@ -36,6 +36,7 @@ XdcConnect.propTypes = {
   onDisconnect: PropTypes.func,
   onAddressChange: PropTypes.func,
   onNetworkChange: PropTypes.func,
+  showButton: PropTypes.bool,
   btnName: PropTypes.string,
   btnClass: PropTypes.string,
   disabled: PropTypes.bool,
@@ -68,6 +69,14 @@ export const CallTransaction = (tx) => {
 
 export const Disconnect = () => {
   store.dispatch(actions.WalletDisconnected());
+};
+
+export const ForceShowModal = () => {
+  store.dispatch(actions.ForceShowModal());
+};
+
+export const ForceCloseModal = () => {
+  store.dispatch(actions.ForceCloseModal());
 };
 
 export const GetNativeBalance = () => {

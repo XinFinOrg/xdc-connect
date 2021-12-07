@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.XdcConnect = exports.SendTransaction = exports.GetWallet = exports.GetNativeBalance = exports.Disconnect = exports.CallTransaction = void 0;
+exports.XdcConnect = exports.SendTransaction = exports.GetWallet = exports.GetNativeBalance = exports.ForceShowModal = exports.ForceCloseModal = exports.Disconnect = exports.CallTransaction = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -57,6 +57,7 @@ XdcConnect.propTypes = {
   onDisconnect: _propTypes.default.func,
   onAddressChange: _propTypes.default.func,
   onNetworkChange: _propTypes.default.func,
+  showButton: _propTypes.default.bool,
   btnName: _propTypes.default.string,
   btnClass: _propTypes.default.string,
   disabled: _propTypes.default.bool,
@@ -97,6 +98,18 @@ var Disconnect = function Disconnect() {
 };
 
 exports.Disconnect = Disconnect;
+
+var ForceShowModal = function ForceShowModal() {
+  _store.default.dispatch(actions.ForceShowModal());
+};
+
+exports.ForceShowModal = ForceShowModal;
+
+var ForceCloseModal = function ForceCloseModal() {
+  _store.default.dispatch(actions.ForceCloseModal());
+};
+
+exports.ForceCloseModal = ForceCloseModal;
 
 var GetNativeBalance = function GetNativeBalance() {
   return Wallet.GetNativeBalance();

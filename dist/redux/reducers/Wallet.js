@@ -38,7 +38,8 @@ var initialState = {
   rpc_provider: "",
   ws_provider: "",
   loader: "",
-  account: null
+  account: null,
+  showModal: false
 };
 
 var WalletReducer = function WalletReducer() {
@@ -88,6 +89,20 @@ var WalletReducer = function WalletReducer() {
       {
         return _objectSpread(_objectSpread({}, state), {}, {
           connected: false
+        });
+      }
+
+    case types.FORCE_SHOW_MODAL:
+      {
+        return _objectSpread(_objectSpread({}, state), {}, {
+          showModal: true
+        });
+      }
+
+    case types.FORCE_CLOSE_MDOAL:
+      {
+        return _objectSpread(_objectSpread({}, state), {}, {
+          showModal: false
         });
       }
 

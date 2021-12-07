@@ -98,15 +98,15 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            showModal: false,
             providerSelected: Provider.menu
           });
+
+          _this.props.ForceCloseModal();
         }
       };
     });
 
     _this.state = {
-      showModal: false,
       providerSelected: Provider.menu
     };
     _this.defaultChainId = _this.props.defaultChainId && _constant.VALID_CHAINS.includes(_this.props.defaultChainId) ? _this.props.defaultChainId : _constant.DEFAULT_CHAIN_ID;
@@ -122,9 +122,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.wallet.connected !== this.props.wallet.connected && this.props.wallet.connected) {
-        this.setState({
-          showModal: false
-        });
+        this.props.ForceCloseModal();
         this.props.onConnect && this.props.onConnect(this.props.wallet);
       }
 
@@ -158,9 +156,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
             type: "button",
             className: "close",
             onClick: function onClick() {
-              return _this2.setState({
-                showModal: false
-              });
+              return _this2.props.ForceCloseModal();
             },
             children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
               "aria-hidden": "true",
@@ -274,26 +270,23 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
         parentClass += " darkTheme";
       }
 
+      var btn = this.props.showButton === false ? "" : /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBootstrap.Button, {
+        className: BTN_CLASS,
+        onClick: function onClick() {
+          return _this3.props.ForceShowModal();
+        },
+        disabled: disabled,
+        children: BTN_MSG
+      });
       return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: parentClass,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBootstrap.Button, {
-          className: BTN_CLASS,
-          onClick: function onClick() {
-            return _this3.setState({
-              showModal: true
-            });
-          },
-          disabled: disabled,
-          children: BTN_MSG
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBootstrap.Modal, {
+        children: [btn, /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBootstrap.Modal, {
           backdrop: this.props.modalBackdrop,
           className: parentClass,
           centered: true,
-          show: this.state.showModal,
+          show: this.props.wallet.showModal,
           onHide: function onHide() {
-            return _this3.setState({
-              showModal: false
-            });
+            return _this3.props.ForceCloseModal();
           },
           children: this.RenderWalletProvider()
         })]

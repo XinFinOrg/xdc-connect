@@ -67,3 +67,15 @@ export const SetWsProvider = (ws_provider) => {
     payload: ws_provider,
   };
 };
+
+export const ForceShowModal = () => {
+  return {
+    type: Types.FORCE_SHOW_MODAL,
+  };
+};
+
+export const ForceCloseModal = () => {
+  return {
+    type: Types.FORCE_CLOSE_MDOAL,
+  };
+};

@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.WalletOpened = exports.WalletDisconnected = exports.WalletConnected = exports.SetWsProvider = exports.SetRpcProvider = exports.SetChainData = exports.NetworkValid = exports.NetworkInValid = exports.NetworkChanged = exports.AccountChanged = void 0;
+exports.WalletOpened = exports.WalletDisconnected = exports.WalletConnected = exports.SetWsProvider = exports.SetRpcProvider = exports.SetChainData = exports.NetworkValid = exports.NetworkInValid = exports.NetworkChanged = exports.ForceShowModal = exports.ForceCloseModal = exports.AccountChanged = void 0;
 
 var _constant = require("../helpers/constant");
 
@@ -125,3 +125,19 @@ var SetWsProvider = function SetWsProvider(ws_provider) {
 };
 
 exports.SetWsProvider = SetWsProvider;
+
+var ForceShowModal = function ForceShowModal() {
+  return {
+    type: Types.FORCE_SHOW_MODAL
+  };
+};
+
+exports.ForceShowModal = ForceShowModal;
+
+var ForceCloseModal = function ForceCloseModal() {
+  return {
+    type: Types.FORCE_CLOSE_MDOAL
+  };
+};
+
+exports.ForceCloseModal = ForceCloseModal;

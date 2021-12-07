@@ -1,5 +1,9 @@
 import React from "react";
-import { TransactionConfig, TransactionReceipt } from "xdc3-core";
+import {
+  TransactionConfig,
+  TransactionReceipt,
+  Transaction as Transaction_,
+} from "xdc3-core";
 
 export interface Account {
   address: string;
@@ -90,3 +94,15 @@ export function Disconnect(): void;
  *
  */
 export function GetNativeBalance(): Promise<number | string>;
+
+/**
+ * API to open connection modal
+ *
+ */
+export function ForceShowModal(): void;
+
+/**
+ * API to close connection modal
+ *
+ */
+export function ForceCloseModal(): void;

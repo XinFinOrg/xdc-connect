@@ -12,6 +12,7 @@ const initialState = {
   ws_provider: "",
   loader: "",
   account: null,
+  showModal: false,
 };
 
 const WalletReducer = (state = initialState, payload) => {
@@ -53,6 +54,14 @@ const WalletReducer = (state = initialState, payload) => {
 
     case types.WALLET_DISCONNECTED: {
       return { ...state, connected: false };
+    }
+
+    case types.FORCE_SHOW_MODAL: {
+      return { ...state, showModal: true };
+    }
+
+    case types.FORCE_CLOSE_MDOAL: {
+      return { ...state, showModal: false };
     }
 
     case types.WALLET_ADDRESS_CHANGED: {

@@ -32,7 +32,6 @@ class WalletConnect extends React.Component {
     super(props);
 
     this.state = {
-      showModal: false,
       providerSelected: Provider.menu,
     };
 
@@ -57,7 +56,7 @@ class WalletConnect extends React.Component {
       prevProps.wallet.connected !== this.props.wallet.connected &&
       this.props.wallet.connected
     ) {
-      this.setState({ showModal: false });
+      this.props.ForceCloseModal();
       this.props.onConnect && this.props.onConnect(this.props.wallet);
     }
 
@@ -97,7 +96,8 @@ class WalletConnect extends React.Component {
         loader,
         explorer: CHAIN_DATA[this.defaultChainId],
       });
-      this.setState({ showModal: false, providerSelected: Provider.menu });
+      this.setState({ providerSelected: Provider.menu });
+      this.props.ForceCloseModal();
     }
   };
 
@@ -114,7 +114,7 @@ class WalletConnect extends React.Component {
             <button
               type="button"
               className="close"
-              onClick={() => this.setState({ showModal: false })}
+              onClick={() => this.props.ForceCloseModal()}
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -215,21 +215,28 @@ class WalletConnect extends React.Component {
       parentClass += " darkTheme";
     }
 
-    return (
-      <div className={parentClass}>
+    const btn =
+      this.props.showButton === false ? (
+        ""
+      ) : (
         <Button
           className={BTN_CLASS}
-          onClick={() => this.setState({ showModal: true })}
+          onClick={() => this.props.ForceShowModal()}
           disabled={disabled}
         >
           {BTN_MSG}
         </Button>
+      );
+
+    return (
+      <div className={parentClass}>
+        {btn}
         <Modal
           backdrop={this.props.modalBackdrop}
           className={parentClass}
           centered={true}
-          show={this.state.showModal}
-          onHide={() => this.setState({ showModal: false })}
+          show={this.props.wallet.showModal}
+          onHide={() => this.props.ForceCloseModal()}
         >
           {this.RenderWalletProvider()}
         </Modal>
