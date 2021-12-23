@@ -34,7 +34,7 @@ export async function SendTransaction(tx) {
     try {
       gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
         timeout: 4999,
-        onTimeout: 500000,
+        onTimeout: 5000000,
       });
     } catch (e) {
       const reason = await GetRevertReason(tx);
@@ -91,7 +91,7 @@ export async function CallTransaction(tx) {
     try {
       gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
         timeout: 4999,
-        onTimeout: 500000,
+        onTimeout: 5000000,
       });
     } catch (e) {
       const reason = await GetRevertReason(tx);

@@ -71,7 +71,7 @@ function _SendTransaction() {
                           return xdc3.eth.estimateGas(tx);
                         }, {
                           timeout: 4999,
-                          onTimeout: 500000
+                          onTimeout: 5000000
                         });
 
                       case 11:
@@ -181,7 +181,7 @@ function _CallTransaction() {
                           return xdc3.eth.estimateGas(tx);
                         }, {
                           timeout: 4999,
-                          onTimeout: 500000
+                          onTimeout: 5000000
                         });
 
                       case 11:
