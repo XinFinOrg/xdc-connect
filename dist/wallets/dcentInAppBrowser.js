@@ -26,6 +26,8 @@ var actions = _interopRequireWildcard(require("../actions"));
 
 var _store = _interopRequireDefault(require("../redux/store"));
 
+var _miscellaneous = require("../helpers/miscellaneous");
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -293,7 +295,12 @@ function _SendTransaction() {
                         xdc3 = new _context6.t0(_context6.t1);
                         _context6.prev = 5;
                         _context6.next = 8;
-                        return xdc3.eth.estimateGas(tx);
+                        return (0, _miscellaneous.WithTimeout)(function () {
+                          return xdc3.eth.estimateGas(tx);
+                        }, {
+                          timeout: 4999,
+                          onTimeout: 500000
+                        });
 
                       case 8:
                         gasLimit = _context6.sent;
@@ -384,7 +391,12 @@ function _CallTransaction() {
                           xdc3 = new _xdc.default(provider);
                           _context8.prev = 1;
                           _context8.next = 4;
-                          return xdc3.eth.estimateGas(tx);
+                          return (0, _miscellaneous.WithTimeout)(function () {
+                            return xdc3.eth.estimateGas(tx);
+                          }, {
+                            timeout: 4999,
+                            onTimeout: 500000
+                          });
 
                         case 4:
                           gasLimit = _context8.sent;

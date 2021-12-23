@@ -202,7 +202,9 @@ function _initXdc() {
 
           case 13:
             _context7.next = 15;
-            return (0, _miscellaneous.WithTimeout)(IsLocked, 2000);
+            return (0, _miscellaneous.WithTimeout)(IsLocked, {
+              timeout: 2000
+            });
 
           case 15:
             isLocked = _context7.sent;
@@ -594,7 +596,12 @@ function _SendTransaction() {
                           xdc3 = new _xdc.default(provider);
                           _context10.prev = 1;
                           _context10.next = 4;
-                          return xdc3.eth.estimateGas(tx);
+                          return (0, _miscellaneous.WithTimeout)(function () {
+                            return xdc3.eth.estimateGas(tx);
+                          }, {
+                            timeout: 4999,
+                            onTimeout: 500000
+                          });
 
                         case 4:
                           gasLimit = _context10.sent;
@@ -725,7 +732,12 @@ function _CallTransaction() {
                           xdc3 = new _xdc.default(provider);
                           _context12.prev = 1;
                           _context12.next = 4;
-                          return xdc3.eth.estimateGas(tx);
+                          return (0, _miscellaneous.WithTimeout)(function () {
+                            return xdc3.eth.estimateGas(tx);
+                          }, {
+                            timeout: 4999,
+                            onTimeout: 500000
+                          });
 
                         case 4:
                           gasLimit = _context12.sent;

@@ -16,6 +16,8 @@ var _crypto = require("../helpers/crypto");
 
 var _constant = require("../helpers/constant");
 
+var _miscellaneous = require("../helpers/miscellaneous");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -65,7 +67,12 @@ function _SendTransaction() {
                         xdc3 = new _xdc.default(new _xdc.default.providers.HttpProvider(provider));
                         _context.prev = 8;
                         _context.next = 11;
-                        return xdc3.eth.estimateGas(tx);
+                        return (0, _miscellaneous.WithTimeout)(function () {
+                          return xdc3.eth.estimateGas(tx);
+                        }, {
+                          timeout: 4999,
+                          onTimeout: 500000
+                        });
 
                       case 11:
                         gasLimit = _context.sent;
@@ -170,7 +177,12 @@ function _CallTransaction() {
                         xdc3 = new _xdc.default(new _xdc.default.providers.HttpProvider(provider));
                         _context3.prev = 8;
                         _context3.next = 11;
-                        return xdc3.eth.estimateGas(tx);
+                        return (0, _miscellaneous.WithTimeout)(function () {
+                          return xdc3.eth.estimateGas(tx);
+                        }, {
+                          timeout: 4999,
+                          onTimeout: 500000
+                        });
 
                       case 11:
                         gasLimit = _context3.sent;

@@ -38,9 +38,18 @@ var IsJson = function IsJson(abi) {
 exports.IsJson = IsJson;
 
 var WithTimeout = function WithTimeout(cb) {
-  var timeout = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5000;
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    timeout: 4999,
+    onTimeout: undefined
+  },
+      _ref$timeout = _ref.timeout,
+      timeout = _ref$timeout === void 0 ? 5000 : _ref$timeout,
+      _ref$onTimeout = _ref.onTimeout,
+      onTimeout = _ref$onTimeout === void 0 ? undefined : _ref$onTimeout;
+
   return new Promise(function (resolve, reject) {
     var int = setTimeout(function () {
+      if (onTimeout) return resolve(onTimeout);
       reject("timeout");
     }, timeout);
     cb().then(function (resp) {
