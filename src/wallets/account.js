@@ -5,6 +5,7 @@ import _ from "lodash";
 import store from "../redux/store";
 import { GetRevertReason } from "../helpers/crypto";
 import { DEFAULT_PROVIDER } from "../helpers/constant";
+import { WithTimeout } from "../helpers/miscellaneous";
 
 /**
  *
@@ -31,7 +32,10 @@ export async function SendTransaction(tx) {
     let gasLimit;
 
     try {
-      gasLimit = await xdc3.eth.estimateGas(tx);
+      gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
+        timeout: 4999,
+        onTimeout: 500000,
+      });
     } catch (e) {
       const reason = await GetRevertReason(tx);
       reject({ message: reason });
@@ -85,7 +89,10 @@ export async function CallTransaction(tx) {
     let gasLimit;
 
     try {
-      gasLimit = await xdc3.eth.estimateGas(tx);
+      gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
+        timeout: 4999,
+        onTimeout: 500000,
+      });
     } catch (e) {
       const reason = await GetRevertReason(tx);
       reject({ message: reason });

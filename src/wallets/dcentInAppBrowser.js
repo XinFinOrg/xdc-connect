@@ -7,6 +7,7 @@ import { CHAIN_DATA, LOADERS } from "../helpers/constant";
 import { GetRevertReason, IsJsonRpcError } from "../helpers/crypto";
 import * as actions from "../actions";
 import store from "../redux/store";
+import { WithTimeout } from "../helpers/miscellaneous";
 
 let xdc3;
 
@@ -95,7 +96,10 @@ export async function SendTransaction(tx) {
     let gasLimit;
 
     try {
-      gasLimit = await xdc3.eth.estimateGas(tx);
+      gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
+        timeout: 4999,
+        onTimeout: 500000,
+      });
     } catch (e) {
       const reason = await GetRevertReason(tx);
       reject({ message: reason });
@@ -135,7 +139,10 @@ export async function CallTransaction(tx) {
         let gasLimit;
 
         try {
-          gasLimit = await xdc3.eth.estimateGas(tx);
+          gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
+            timeout: 4999,
+            onTimeout: 500000,
+          });
         } catch (e) {
           const reason = await GetRevertReason(tx);
           reject({ message: reason });

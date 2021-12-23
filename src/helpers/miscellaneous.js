@@ -20,9 +20,16 @@ export const IsJson = (abi) => {
   return true;
 };
 
-export const WithTimeout = (cb, timeout = 5000) => {
+export const WithTimeout = (
+  cb,
+  { timeout = 5000, onTimeout = undefined } = {
+    timeout: 4999,
+    onTimeout: undefined,
+  }
+) => {
   return new Promise((resolve, reject) => {
     let int = setTimeout(() => {
+      if (onTimeout) return resolve(onTimeout);
       reject("timeout");
     }, timeout);
 

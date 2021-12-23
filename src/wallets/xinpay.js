@@ -86,7 +86,7 @@ export async function initXdc3() {
       return store.dispatch(actions.WalletDisconnected());
     }
 
-    const isLocked = await WithTimeout(IsLocked, 2000);
+    const isLocked = await WithTimeout(IsLocked, { timeout: 2000 });
     if (isLocked === true) {
       toast("Please unlock XDCPay wallet to continue", { autoClose: 2000 });
       return store.dispatch(actions.WalletDisconnected());
@@ -243,7 +243,10 @@ export async function SendTransaction(tx) {
         let gasLimit;
 
         try {
-          gasLimit = await xdc3.eth.estimateGas(tx);
+          gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
+            timeout: 4999,
+            onTimeout: 500000,
+          });
         } catch (e) {
           const reason = await GetRevertReason(tx);
           reject({ message: reason });
@@ -303,7 +306,10 @@ export async function CallTransaction(tx) {
         let gasLimit;
 
         try {
-          gasLimit = await xdc3.eth.estimateGas(tx);
+          gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
+            timeout: 4999,
+            onTimeout: 500000,
+          });
         } catch (e) {
           const reason = await GetRevertReason(tx);
           reject({ message: reason });
