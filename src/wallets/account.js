@@ -6,6 +6,7 @@ import store from "../redux/store";
 import { GetRevertReason } from "../helpers/crypto";
 import { DEFAULT_PROVIDER } from "../helpers/constant";
 import { WithTimeout } from "../helpers/miscellaneous";
+import { RemoveExpo } from "../helpers/math";
 
 /**
  *
@@ -16,7 +17,7 @@ import { WithTimeout } from "../helpers/miscellaneous";
 export async function SendTransaction(tx) {
   return new Promise(async (resolve, reject) => {
     const data = store.getState();
-    const { account, rpc_provider } = data.wallet;
+    const { account, rpc_provider, gasMultiplier = 1 } = data.wallet;
     if (!account) reject("Account not loaded");
     const { privateKey } = account;
     if (_.isEmpty(privateKey)) reject("Account not loaded");
@@ -29,7 +30,7 @@ export async function SendTransaction(tx) {
 
     const xdc3 = new Xdc3(new Xdc3.providers.HttpProvider(provider));
 
-    let gasLimit;
+    let gasLimit, gasPrice;
 
     try {
       gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
@@ -41,6 +42,17 @@ export async function SendTransaction(tx) {
       reject({ message: reason });
       return;
     }
+
+    try {
+      gasPrice = await xdc3.eth.getGasPrice();
+      gasPrice = RemoveExpo(parseFloat(gasMultiplier) * parseFloat(gasPrice));
+    } catch (e) {
+      console.log(e);
+    }
+
+
+    if (gasPrice && !isNaN(parseFloat(gasPrice)) && parseFloat(gasPrice) > 0)
+      tx["gasPrice"] = gasPrice;
 
     tx["gas"] = gasLimit;
 

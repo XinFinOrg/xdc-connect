@@ -49,6 +49,13 @@ class WalletConnect extends React.Component {
       this.props.SetRpcProvider(this.props.rpcProvider);
 
     if (this.props.wsProvider) this.props.SetWsProvider(this.props.wsProvider);
+
+    if (
+      this.props.gasMultiplier &&
+      !isNaN(parseFloat(this.props.gasMultiplier)) &&
+      parseFloat(this.props.gasMultiplier) > 0
+    )
+      this.props.SetGasMultiplier(parseFloat(this.props.gasMultiplier));
   }
 
   componentDidUpdate(prevProps) {

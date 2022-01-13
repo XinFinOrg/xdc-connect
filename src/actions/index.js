@@ -61,6 +61,13 @@ export const SetRpcProvider = (rpc_provider) => {
   };
 };
 
+export const SetGasMultiplier = (value) => {
+  return {
+    type: Types.SET_GAS_MULTIPLIER,
+    payload: value,
+  };
+};
+
 export const SetWsProvider = (ws_provider) => {
   return {
     type: Types.SET_WS_PROVIDER,

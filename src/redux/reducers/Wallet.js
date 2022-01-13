@@ -13,6 +13,7 @@ const initialState = {
   loader: "",
   account: null,
   showModal: false,
+  gasMultiplier: 1,
 };
 
 const WalletReducer = (state = initialState, payload) => {
@@ -35,6 +36,14 @@ const WalletReducer = (state = initialState, payload) => {
         loader,
         valid_network,
         ...rst,
+      };
+    }
+
+
+    case types.SET_GAS_MULTIPLIER: {
+      return {
+        ...state,
+        gasMultiplier: payload.payload,
       };
     }
 

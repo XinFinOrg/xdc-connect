@@ -9,6 +9,7 @@ import * as actions from "../actions";
 import store from "../redux/store";
 import { toast } from "react-toastify";
 import { WithTimeout } from "../helpers/miscellaneous";
+import { RemoveExpo } from "../helpers/math";
 
 let addresses, xdc3, addressChangeIntervalRef;
 
@@ -240,7 +241,10 @@ export async function SendTransaction(tx) {
     GetProvider()
       .then(async (provider) => {
         const xdc3 = new Xdc3(provider);
-        let gasLimit;
+        const data = store.getState();
+        const { gasMultiplier = 1 } = data.wallet;
+
+        let gasLimit, gasPrice;
 
         try {
           gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
@@ -252,6 +256,22 @@ export async function SendTransaction(tx) {
           reject({ message: reason });
           return;
         }
+
+        try {
+          gasPrice = await xdc3.eth.getGasPrice();
+          gasPrice = RemoveExpo(
+            parseFloat(gasMultiplier) * parseFloat(gasPrice)
+          );
+        } catch (e) {
+          console.log(e);
+        }
+
+        if (
+          gasPrice &&
+          !isNaN(parseFloat(gasPrice)) &&
+          parseFloat(gasPrice) > 0
+        )
+          tx["gasPrice"] = gasPrice;
 
         tx["gas"] = gasLimit;
 

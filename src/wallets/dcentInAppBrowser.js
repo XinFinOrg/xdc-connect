@@ -8,6 +8,7 @@ import { GetRevertReason, IsJsonRpcError } from "../helpers/crypto";
 import * as actions from "../actions";
 import store from "../redux/store";
 import { WithTimeout } from "../helpers/miscellaneous";
+import { RemoveExpo } from "../helpers/math";
 
 let xdc3;
 
@@ -92,8 +93,10 @@ export function _initListerner() {
 export async function SendTransaction(tx) {
   return new Promise(async (resolve, reject) => {
     const xdc3 = new Xdc3(await GetProvider());
+    const data = store.getState();
+    const { gasMultiplier = 1 } = data.wallet;
 
-    let gasLimit;
+    let gasLimit, gasPrice;
 
     try {
       gasLimit = await WithTimeout(() => xdc3.eth.estimateGas(tx), {
@@ -106,28 +109,43 @@ export async function SendTransaction(tx) {
       return;
     }
 
+    try {
+      gasPrice = await xdc3.eth.getGasPrice();
+      gasPrice = RemoveExpo(parseFloat(gasMultiplier) * parseFloat(gasPrice));
+    } catch (e) {
+      console.log(e);
+    }
+
+    if (gasPrice && !isNaN(parseFloat(gasPrice)) && parseFloat(gasPrice) > 0)
+      tx["gasPrice"] = gasPrice;
+
     tx["gas"] = gasLimit;
 
-    xdc3.eth.sendTransaction(tx).once("receipt", (receipt) => {
-      if (receipt !== null) {
-        if (receipt.status) {
-          resolve(receipt);
-        } else {
-          // reject(receipt);
-          xdc3.eth.getTransaction(receipt.transactionHash).then((tx) => {
-            tx = { ...tx };
-            xdc3.eth
-              .call(tx)
-              .then((x) => {
-                const other = x.replace("0x", "").slice(8);
-                const buf = Buffer.from(other, "hex");
-                reject({ message: buf.toString() });
-              })
-              .catch(() => reject({ message: "Transaction Failed" }));
-          });
+    xdc3.eth
+      .sendTransaction(tx)
+      .once("receipt", (receipt) => {
+        if (receipt !== null) {
+          if (receipt.status) {
+            resolve(receipt);
+          } else {
+            // reject(receipt);
+            xdc3.eth.getTransaction(receipt.transactionHash).then((tx) => {
+              tx = { ...tx };
+              xdc3.eth
+                .call(tx)
+                .then((x) => {
+                  const other = x.replace("0x", "").slice(8);
+                  const buf = Buffer.from(other, "hex");
+                  reject({ message: buf.toString() });
+                })
+                .catch(() => reject({ message: "Transaction Failed" }));
+            });
+          }
         }
-      }
-    });
+      })
+      .on("error", () => {
+        reject({ message: "Transaction Failed" });
+      });
   });
 }
 

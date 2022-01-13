@@ -46,6 +46,7 @@ XdcConnect.propTypes = {
   addToastContainer: PropTypes.bool,
   rpcProvider: PropTypes.string,
   wsProvider: PropTypes.string,
+  gasMultiplier: PropTypes.number
 };
 
 XdcConnect.defaultProps = {
