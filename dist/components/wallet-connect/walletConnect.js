@@ -115,6 +115,7 @@ var WalletConnect = /*#__PURE__*/function (_React$Component) {
     });
     if (_this.props.rpcProvider) _this.props.SetRpcProvider(_this.props.rpcProvider);
     if (_this.props.wsProvider) _this.props.SetWsProvider(_this.props.wsProvider);
+    if (_this.props.gasMultiplier && !isNaN(parseFloat(_this.props.gasMultiplier)) && parseFloat(_this.props.gasMultiplier) > 0) _this.props.SetGasMultiplier(parseFloat(_this.props.gasMultiplier));
     return _this;
   }
 

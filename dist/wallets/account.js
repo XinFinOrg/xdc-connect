@@ -18,6 +18,8 @@ var _constant = require("../helpers/constant");
 
 var _miscellaneous = require("../helpers/miscellaneous");
 
+var _math = require("../helpers/math");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -47,14 +49,14 @@ function _SendTransaction() {
           case 0:
             return _context2.abrupt("return", new Promise( /*#__PURE__*/function () {
               var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(resolve, reject) {
-                var data, _data$wallet, account, rpc_provider, privateKey, provider, xdc3, gasLimit, reason, signed;
+                var data, _data$wallet, account, rpc_provider, _data$wallet$gasMulti, gasMultiplier, privateKey, provider, xdc3, gasLimit, gasPrice, reason, signed;
 
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
                       case 0:
                         data = _store.default.getState();
-                        _data$wallet = data.wallet, account = _data$wallet.account, rpc_provider = _data$wallet.rpc_provider;
+                        _data$wallet = data.wallet, account = _data$wallet.account, rpc_provider = _data$wallet.rpc_provider, _data$wallet$gasMulti = _data$wallet.gasMultiplier, gasMultiplier = _data$wallet$gasMulti === void 0 ? 1 : _data$wallet$gasMulti;
                         if (!account) reject("Account not loaded");
                         privateKey = account.privateKey;
                         if (_lodash.default.isEmpty(privateKey)) reject("Account not loaded");
@@ -93,11 +95,28 @@ function _SendTransaction() {
                         return _context.abrupt("return");
 
                       case 21:
-                        tx["gas"] = gasLimit;
+                        _context.prev = 21;
                         _context.next = 24;
-                        return xdc3.eth.accounts.signTransaction(tx, privateKey);
+                        return xdc3.eth.getGasPrice();
 
                       case 24:
+                        gasPrice = _context.sent;
+                        gasPrice = (0, _math.RemoveExpo)(parseFloat(gasMultiplier) * parseFloat(gasPrice));
+                        _context.next = 31;
+                        break;
+
+                      case 28:
+                        _context.prev = 28;
+                        _context.t1 = _context["catch"](21);
+                        console.log(_context.t1);
+
+                      case 31:
+                        if (gasPrice && !isNaN(parseFloat(gasPrice)) && parseFloat(gasPrice) > 0) tx["gasPrice"] = gasPrice;
+                        tx["gas"] = gasLimit;
+                        _context.next = 35;
+                        return xdc3.eth.accounts.signTransaction(tx, privateKey);
+
+                      case 35:
                         signed = _context.sent;
                         xdc3.eth.sendSignedTransaction(signed.rawTransaction).once("receipt", function (receipt) {
                           if (receipt !== null) {
@@ -122,12 +141,12 @@ function _SendTransaction() {
                           }
                         });
 
-                      case 26:
+                      case 37:
                       case "end":
                         return _context.stop();
                     }
                   }
-                }, _callee, null, [[8, 14]]);
+                }, _callee, null, [[8, 14], [21, 28]]);
               }));
 
               return function (_x3, _x4) {

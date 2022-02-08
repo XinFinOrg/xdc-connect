@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.WalletOpened = exports.WalletDisconnected = exports.WalletConnected = exports.SetWsProvider = exports.SetRpcProvider = exports.SetChainData = exports.NetworkValid = exports.NetworkInValid = exports.NetworkChanged = exports.ForceShowModal = exports.ForceCloseModal = exports.AccountChanged = void 0;
+exports.WalletOpened = exports.WalletDisconnected = exports.WalletConnected = exports.SetWsProvider = exports.SetRpcProvider = exports.SetGasMultiplier = exports.SetChainData = exports.NetworkValid = exports.NetworkInValid = exports.NetworkChanged = exports.ForceShowModal = exports.ForceCloseModal = exports.AccountChanged = void 0;
 
 var _constant = require("../helpers/constant");
 
@@ -116,6 +116,15 @@ var SetRpcProvider = function SetRpcProvider(rpc_provider) {
 };
 
 exports.SetRpcProvider = SetRpcProvider;
+
+var SetGasMultiplier = function SetGasMultiplier(value) {
+  return {
+    type: Types.SET_GAS_MULTIPLIER,
+    payload: value
+  };
+};
+
+exports.SetGasMultiplier = SetGasMultiplier;
 
 var SetWsProvider = function SetWsProvider(ws_provider) {
   return {

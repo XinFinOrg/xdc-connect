@@ -66,7 +66,8 @@ XdcConnect.propTypes = {
   enabledProviders: _propTypes.default.arrayOf(_propTypes.default.string),
   addToastContainer: _propTypes.default.bool,
   rpcProvider: _propTypes.default.string,
-  wsProvider: _propTypes.default.string
+  wsProvider: _propTypes.default.string,
+  gasMultiplier: _propTypes.default.number
 };
 XdcConnect.defaultProps = {
   btnName: "CONNECT",

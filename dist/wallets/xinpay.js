@@ -36,6 +36,8 @@ var _reactToastify = require("react-toastify");
 
 var _miscellaneous = require("../helpers/miscellaneous");
 
+var _math = require("../helpers/math");
+
 var _jsxRuntime = require("react/jsx-runtime");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -588,14 +590,17 @@ function _SendTransaction() {
             return _context11.abrupt("return", new Promise(function (resolve, reject) {
               GetProvider().then( /*#__PURE__*/function () {
                 var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(provider) {
-                  var xdc3, gasLimit, reason;
+                  var xdc3, data, _data$wallet$gasMulti, gasMultiplier, gasLimit, gasPrice, reason;
+
                   return regeneratorRuntime.wrap(function _callee10$(_context10) {
                     while (1) {
                       switch (_context10.prev = _context10.next) {
                         case 0:
                           xdc3 = new _xdc.default(provider);
-                          _context10.prev = 1;
-                          _context10.next = 4;
+                          data = _store.default.getState();
+                          _data$wallet$gasMulti = data.wallet.gasMultiplier, gasMultiplier = _data$wallet$gasMulti === void 0 ? 1 : _data$wallet$gasMulti;
+                          _context10.prev = 3;
+                          _context10.next = 6;
                           return (0, _miscellaneous.WithTimeout)(function () {
                             return xdc3.eth.estimateGas(tx);
                           }, {
@@ -603,25 +608,42 @@ function _SendTransaction() {
                             onTimeout: 5000000
                           });
 
-                        case 4:
+                        case 6:
                           gasLimit = _context10.sent;
-                          _context10.next = 14;
+                          _context10.next = 16;
                           break;
 
-                        case 7:
-                          _context10.prev = 7;
-                          _context10.t0 = _context10["catch"](1);
-                          _context10.next = 11;
+                        case 9:
+                          _context10.prev = 9;
+                          _context10.t0 = _context10["catch"](3);
+                          _context10.next = 13;
                           return (0, _crypto.GetRevertReason)(tx);
 
-                        case 11:
+                        case 13:
                           reason = _context10.sent;
                           reject({
                             message: reason
                           });
                           return _context10.abrupt("return");
 
-                        case 14:
+                        case 16:
+                          _context10.prev = 16;
+                          _context10.next = 19;
+                          return xdc3.eth.getGasPrice();
+
+                        case 19:
+                          gasPrice = _context10.sent;
+                          gasPrice = (0, _math.RemoveExpo)(parseFloat(gasMultiplier) * parseFloat(gasPrice));
+                          _context10.next = 26;
+                          break;
+
+                        case 23:
+                          _context10.prev = 23;
+                          _context10.t1 = _context10["catch"](16);
+                          console.log(_context10.t1);
+
+                        case 26:
+                          if (gasPrice && !isNaN(parseFloat(gasPrice)) && parseFloat(gasPrice) > 0) tx["gasPrice"] = gasPrice;
                           tx["gas"] = gasLimit;
                           xdc3.eth.sendTransaction(tx, function (err, hash) {
                             if (err) reject(err);
@@ -681,12 +703,12 @@ function _SendTransaction() {
                             })), 2000);
                           });
 
-                        case 16:
+                        case 29:
                         case "end":
                           return _context10.stop();
                       }
                     }
-                  }, _callee10, null, [[1, 7]]);
+                  }, _callee10, null, [[3, 9], [16, 23]]);
                 }));
 
                 return function (_x6) {

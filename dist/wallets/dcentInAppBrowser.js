@@ -28,6 +28,8 @@ var _store = _interopRequireDefault(require("../redux/store"));
 
 var _miscellaneous = require("../helpers/miscellaneous");
 
+var _math = require("../helpers/math");
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -281,7 +283,8 @@ function _SendTransaction() {
           case 0:
             return _context7.abrupt("return", new Promise( /*#__PURE__*/function () {
               var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(resolve, reject) {
-                var xdc3, gasLimit, reason;
+                var xdc3, data, _data$wallet$gasMulti, gasMultiplier, gasLimit, gasPrice, reason;
+
                 return regeneratorRuntime.wrap(function _callee6$(_context6) {
                   while (1) {
                     switch (_context6.prev = _context6.next) {
@@ -293,8 +296,10 @@ function _SendTransaction() {
                       case 3:
                         _context6.t1 = _context6.sent;
                         xdc3 = new _context6.t0(_context6.t1);
-                        _context6.prev = 5;
-                        _context6.next = 8;
+                        data = _store.default.getState();
+                        _data$wallet$gasMulti = data.wallet.gasMultiplier, gasMultiplier = _data$wallet$gasMulti === void 0 ? 1 : _data$wallet$gasMulti;
+                        _context6.prev = 7;
+                        _context6.next = 10;
                         return (0, _miscellaneous.WithTimeout)(function () {
                           return xdc3.eth.estimateGas(tx);
                         }, {
@@ -302,25 +307,42 @@ function _SendTransaction() {
                           onTimeout: 5000000
                         });
 
-                      case 8:
+                      case 10:
                         gasLimit = _context6.sent;
-                        _context6.next = 18;
+                        _context6.next = 20;
                         break;
 
-                      case 11:
-                        _context6.prev = 11;
-                        _context6.t2 = _context6["catch"](5);
-                        _context6.next = 15;
+                      case 13:
+                        _context6.prev = 13;
+                        _context6.t2 = _context6["catch"](7);
+                        _context6.next = 17;
                         return (0, _crypto.GetRevertReason)(tx);
 
-                      case 15:
+                      case 17:
                         reason = _context6.sent;
                         reject({
                           message: reason
                         });
                         return _context6.abrupt("return");
 
-                      case 18:
+                      case 20:
+                        _context6.prev = 20;
+                        _context6.next = 23;
+                        return xdc3.eth.getGasPrice();
+
+                      case 23:
+                        gasPrice = _context6.sent;
+                        gasPrice = (0, _math.RemoveExpo)(parseFloat(gasMultiplier) * parseFloat(gasPrice));
+                        _context6.next = 30;
+                        break;
+
+                      case 27:
+                        _context6.prev = 27;
+                        _context6.t3 = _context6["catch"](20);
+                        console.log(_context6.t3);
+
+                      case 30:
+                        if (gasPrice && !isNaN(parseFloat(gasPrice)) && parseFloat(gasPrice) > 0) tx["gasPrice"] = gasPrice;
                         tx["gas"] = gasLimit;
                         xdc3.eth.sendTransaction(tx).once("receipt", function (receipt) {
                           if (receipt !== null) {
@@ -344,14 +366,18 @@ function _SendTransaction() {
                               });
                             }
                           }
+                        }).on("error", function () {
+                          reject({
+                            message: "Transaction Failed"
+                          });
                         });
 
-                      case 20:
+                      case 33:
                       case "end":
                         return _context6.stop();
                     }
                   }
-                }, _callee6, null, [[5, 11]]);
+                }, _callee6, null, [[7, 13], [20, 27]]);
               }));
 
               return function (_x6, _x7) {

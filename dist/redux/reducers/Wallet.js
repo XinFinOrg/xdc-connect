@@ -39,7 +39,8 @@ var initialState = {
   ws_provider: "",
   loader: "",
   account: null,
-  showModal: false
+  showModal: false,
+  gasMultiplier: 1
 };
 
 var WalletReducer = function WalletReducer() {
@@ -69,6 +70,13 @@ var WalletReducer = function WalletReducer() {
           loader: loader,
           valid_network: valid_network
         }, rst);
+      }
+
+    case types.SET_GAS_MULTIPLIER:
+      {
+        return _objectSpread(_objectSpread({}, state), {}, {
+          gasMultiplier: payload.payload
+        });
       }
 
     case types.SET_RPC_PROVIDER:
