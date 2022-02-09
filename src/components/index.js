@@ -46,7 +46,7 @@ XdcConnect.propTypes = {
   addToastContainer: PropTypes.bool,
   rpcProvider: PropTypes.string,
   wsProvider: PropTypes.string,
-  gasMultiplier: PropTypes.number
+  gasMultiplier: PropTypes.number,
 };
 
 XdcConnect.defaultProps = {
@@ -78,6 +78,10 @@ export const ForceShowModal = () => {
 
 export const ForceCloseModal = () => {
   store.dispatch(actions.ForceCloseModal());
+};
+
+export const SetGasMultiplier = (gasMultiplier) => {
+  store.dispatch(actions.SetGasMultiplier(gasMultiplier));
 };
 
 export const GetNativeBalance = () => {

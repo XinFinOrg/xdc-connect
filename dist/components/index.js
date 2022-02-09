@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.XdcConnect = exports.SendTransaction = exports.GetWallet = exports.GetNativeBalance = exports.ForceShowModal = exports.ForceCloseModal = exports.Disconnect = exports.CallTransaction = void 0;
+exports.XdcConnect = exports.SetGasMultiplier = exports.SendTransaction = exports.GetWallet = exports.GetNativeBalance = exports.ForceShowModal = exports.ForceCloseModal = exports.Disconnect = exports.CallTransaction = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -111,6 +111,12 @@ var ForceCloseModal = function ForceCloseModal() {
 };
 
 exports.ForceCloseModal = ForceCloseModal;
+
+var SetGasMultiplier = function SetGasMultiplier(gasMultiplier) {
+  _store.default.dispatch(actions.SetGasMultiplier(gasMultiplier));
+};
+
+exports.SetGasMultiplier = SetGasMultiplier;
 
 var GetNativeBalance = function GetNativeBalance() {
   return Wallet.GetNativeBalance();

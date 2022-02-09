@@ -52,7 +52,7 @@ export interface WalletConnectProps {
   toastContainer?: any;
   rpcProvider?: string;
   wsProvider?: string;
-  gasMultiplier:? number;
+  gasMultiplier: ?number;
 }
 
 export class XdcConnect extends React.Component<WalletConnectProps, any> {}
@@ -108,3 +108,9 @@ export function ForceShowModal(): void;
  *
  */
 export function ForceCloseModal(): void;
+
+/**
+ * API to update gas multiplier
+ *
+ */
+export function SetGasMultiplier(gasMultiplier: string): void;
