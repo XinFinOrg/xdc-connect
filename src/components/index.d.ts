@@ -113,4 +113,4 @@ export function ForceCloseModal(): void;
  * API to update gas multiplier
  *
  */
-export function SetGasMultiplier(gasMultiplier: string): void;
+export function SetGasMultiplier(gasMultiplier: number): void;
