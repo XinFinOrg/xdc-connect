@@ -4,8 +4,8 @@ A library which lets your application connect to major XDC wallet providers - ha
 
 Prerequisite :- 
 
-  NodeJS >14  
-  Python >2.7.18
+  NodeJS : 14  
+  Python : 2.7.18
   
 
 Documentation: [Xdc Connect](https://xinfinorg.github.io/xdc-connect).  
